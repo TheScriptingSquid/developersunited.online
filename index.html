@@ -8,16 +8,15 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #121212;
-            color: #ffffff;
+            color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
             margin: 0;
             overflow: hidden;
-            position: relative;
         }
 
-        /* Old background with grid mesh */
+        /* Grid Background */
         body::before {
             content: "";
             position: absolute;
@@ -39,11 +38,18 @@
             text-align: center;
         }
 
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+        header h1 {
+            font-size: 2.5em;
+            color: #D4AF37; /* Gold color for text */
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+            letter-spacing: 2px;
+        }
+
+        .search-box input {
+            padding: 8px;
             width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
         }
 
         .portfolio-card {
@@ -53,16 +59,29 @@
             text-align: center;
             background-color: #333;
             transition: transform 0.3s;
+            color: #fff;
         }
+
         .portfolio-card:hover {
             transform: scale(1.05);
         }
-        .search-box input {
-            padding: 8px;
-            width: 100%;
-            max-width: 400px;
-            box-sizing: border-box;
+
+        .portfolio-card h2 {
+            color: #D4AF37; /* Gold color for text */
+            font-size: 1.8em;
+            margin: 10px 0;
         }
+
+        .portfolio-card a {
+            color: #D4AF37; /* Gold color for links */
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .portfolio-card a:hover {
+            text-decoration: underline;
+        }
+
         #discord-icon {
             margin-top: 20px;
             width: 40px;
@@ -70,15 +89,11 @@
             cursor: pointer;
         }
 
-        /* Text for Discord Button */
-        .discord-button-text {
-            font-size: 16px;
-            margin-top: 10px;
-            display: block;
-            color: #ffffff;
-            text-decoration: none;
-            text-align: center;
-            font-weight: bold;
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
         }
     </style>
 </head>
@@ -112,7 +127,6 @@
 
     <a href="https://discord.com/invite/yourdiscordlink" target="_blank">
         <img id="discord-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAASFBMVEVHcExYZPFXZPJXZPFXZPFXZPFXZPFXZPFYZPJYZfJYZPJXZfFWY/JhbfNsd/OSmvbS1fv////x8/6pr/hQXvLl5/2Bi/XAxfpYg8U1AAAADHRSTlMADzmFwOT8YtP/sloPkm6kAAABAklEQVR4AYWTBbLFIAxFcXs4lf3vFEg1X2+9JzITIZco40IqJQVnlGBRbewtoxFmziI59rCPRGhIfn5hiLKDYSkJkemZz98689IB9YlCjPMlxnBgr4ejgTebcqltqJacLFBDCQPHJZWX0gIOjHB4Lusbrgu4ciKQI3IVRALMGGaAkqgZNdQRK4U8foc0MtQw46oDbmC9pBkQomwHlBPOlOsW9lL2sK1XUknETNnKpNOl5slKm1AQfsFaxw2eF+RQBB9HwLq3PedxG3CPMyc7yufDqF6b5Q2+jfoFf5SPaH/WPXhQuCqvn5bNVqEXR1GzkST7e0wwxeyX0fSO/T/Uf65DBzQNHUMopTvLAAAAAElFTkSuQmCC" alt="Join our Discord">
-        <span class="discord-button-text">Join Developers United Discord Server!</span>
     </a>
 
     <script>
