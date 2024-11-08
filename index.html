@@ -4,17 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Portfolio Showcase</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Basic styling for layout */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
+            background-color: #121212;
+            color: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin: 0;
+            overflow: hidden;
         }
+
+        /* Grid Background */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 75px 75px;
+            z-index: -1;
+        }
+
         header, .search-box, .featured-developers, .portfolio-grid {
             max-width: 800px;
             width: 100%;
@@ -22,18 +37,20 @@
             padding: 10px;
             text-align: center;
         }
+
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
             width: 100%;
         }
+
         .portfolio-card {
             border: 1px solid #ddd;
             padding: 10px;
             border-radius: 5px;
             text-align: center;
-            background-color: #fff;
+            background-color: #333;
             transition: transform 0.3s;
         }
         .portfolio-card:hover {
@@ -44,20 +61,6 @@
             width: 100%;
             max-width: 400px;
             box-sizing: border-box;
-        }
-        .social-links a {
-            margin: 5px;
-            text-decoration: none;
-            color: #0073e6;
-        }
-        .dark-mode {
-            background-color: #333;
-            color: #fff;
-        }
-        button {
-            padding: 8px 12px;
-            cursor: pointer;
-            border-radius: 5px;
         }
         #discord-icon {
             margin-top: 20px;
@@ -70,7 +73,6 @@
 <body>
     <header>
         <h1>Developer Portfolio Showcase</h1>
-        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
     </header>
 
     <div class="search-box">
@@ -88,48 +90,19 @@
 
     <section class="portfolio-grid" id="portfolioGrid">
         <div class="portfolio-card">
-            <img src="https://yt3.ggpht.com/Yyro1wvm--xSHT6TcFj2EAnIp09MdrHkhhWmIfbDIjY8BRhy-6WxqwVDiaqWPKWvaiGGz7sd=s176-c-k-c0x00ffffff-no-rj-mo" alt="Squid's Profile Picture">
+            <img src="https://via.placeholder.com/150" alt="Profile Picture">
             <h2>Squid</h2>
             <p>Web Development, UI Design</p>
             <a href="https://sites.google.com/view/squids-portfolio?usp=sharing" target="_blank">View Portfolio</a>
-            <div class="social-links">
-                <a href="https://github.com/username" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/username" target="_blank">LinkedIn</a>
-            </div>
         </div>
-        <!-- Additional mock portfolios -->
-        <div class="portfolio-card">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture">
-            <h2>Alex Johnson</h2>
-            <p>Front-End Developer, UI/UX</p>
-            <a href="https://example.com/alexjohnson" target="_blank">View Portfolio</a>
-            <div class="social-links">
-                <a href="https://github.com/alexjohnson" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/alexjohnson" target="_blank">LinkedIn</a>
-            </div>
-        </div>
-        <div class="portfolio-card">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture">
-            <h2>Emily White</h2>
-            <p>Full Stack Developer</p>
-            <a href="https://example.com/emilywhite" target="_blank">View Portfolio</a>
-            <div class="social-links">
-                <a href="https://github.com/emilywhite" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/emilywhite" target="_blank">LinkedIn</a>
-            </div>
-        </div>
-        <!-- More mock portfolios as needed -->
+        <!-- Additional portfolios as needed -->
     </section>
 
     <a href="https://discord.com/invite/yourdiscordlink" target="_blank">
-        <img id="discord-icon" src="https://upload.wikimedia.org/wikipedia/commons/7/72/Discord_logo.svg" alt="Join our Discord">
+        <img id="discord-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAASFBMVEVHcExYZPFXZPJXZPFXZPFXZPFXZPFXZPFYZPJYZfJYZPJXZfFWY/JhbfNsd/OSmvbS1fv////x8/6pr/hQXvLl5/2Bi/XAxfpYg8U1AAAADHRSTlMADzmFwOT8YtP/sloPkm6kAAABAklEQVR4AYWTBbLFIAxFcXs4lf3vFEg1X2+9JzITIZco40IqJQVnlGBRbewtoxFmziI59rCPRGhIfn5hiLKDYSkJkemZz98689IB9YlCjPMlxnBgr4ejgTebcqltqJacLFBDCQPHJZWX0gIOjHB4Lusbrgu4ciKQI3IVRALMGGaAkqgZNdQRK4U8foc0MtQw46oDbmC9pBkQomwHlBPOlOsW9lL2sK1XUknETNnKpNOl5slKm1AQfsFaxw2eF+RQBB9HwLq3PedxG3CPMyc7yufDqF6b5Q2+jfoFf5SPaH/WPXhQuCqvn5bNVqEXR1GzkST7e0wwxeyX0fSO/T/Uf65DBzQNHUMopTvLAAAAAElFTkSuQmCC" alt="Join our Discord">
     </a>
 
     <script>
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
-        }
-
         function searchPortfolios() {
             const input = document.getElementById('searchInput').value.toLowerCase();
             const portfolioCards = document.getElementsByClassName('portfolio-card');
@@ -142,4 +115,3 @@
     </script>
 </body>
 </html>
-
