@@ -5,21 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Portfolios</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic styling for layout */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .portfolio-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .search-box {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .search-box input {
+            padding: 8px;
+            width: 80%;
+            max-width: 400px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Developer Portfolio Showcase</h1>
     </header>
     <main>
-        <section class="portfolio-grid">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search for a developer portfolio..." onkeyup="searchPortfolios()">
+        </div>
+        <section class="portfolio-grid" id="portfolioGrid">
             <!-- Repeat this block for each developer -->
             <div class="portfolio-card">
-                <h2>Developer Name</h2>
-                <p>Specialty/Skills</p>
+                <h2>Squid</h2>
+                <p>Web Development, UI Design</p>
                 <a href="https://sites.google.com/view/squids-portfolio?usp=sharing" target="_blank">View Portfolio</a>
             </div>
-            <!-- More portfolio cards here -->
+            <div class="portfolio-card">
+                <h2>Jane Doe</h2>
+                <p>Data Science, Machine Learning</p>
+                <a href="https://example.com/janedoe" target="_blank">View Portfolio</a>
+            </div>
+            <div class="portfolio-card">
+                <h2>John Smith</h2>
+                <p>Mobile Development, UX Design</p>
+                <a href="https://example.com/johnsmith" target="_blank">View Portfolio</a>
+            </div>
+            <!-- Add more portfolio cards as needed -->
         </section>
     </main>
+
+    <script>
+        function searchPortfolios() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const portfolioCards = document.getElementsByClassName('portfolio-card');
+            
+            for (let card of portfolioCards) {
+                const developerName = card.getElementsByTagName('h2')[0].innerText.toLowerCase();
+                const specialty = card.getElementsByTagName('p')[0].innerText.toLowerCase();
+                
+                // Show card if it matches the search input, hide it otherwise
+                if (developerName.includes(input) || specialty.includes(input)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        }
+    </script>
 </body>
 </html>
