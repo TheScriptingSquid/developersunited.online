@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Portfolio Showcase</title>
     <style>
+        /* Body and Background */
         body {
             font-family: Arial, sans-serif;
+            color: #f0f0f0;
             background-color: #121212;
-            color: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -30,43 +31,90 @@
             z-index: -1;
         }
 
-        header, .search-box, .featured-developers, .portfolio-grid {
-            max-width: 800px;
-            width: 100%;
-            margin: 20px auto;
-            padding: 10px;
+        /* Header */
+        h1, h2 {
             text-align: center;
         }
+        header h1 {
+            font-size: 2em;
+            margin: 20px 0;
+            color: #ffd700; /* Gold color for text */
+        }
 
+        /* Portfolio Grid Layout */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            width: 100%;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
         }
 
+        /* Portfolio Card */
         .portfolio-card {
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
             background-color: #333;
-            transition: transform 0.3s;
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.2s ease;
+            text-align: center;
+        }
+        .portfolio-card img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+        .portfolio-card h2 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        .portfolio-card p {
+            font-size: 1em;
+            color: #b0b0b0;
+        }
+        .portfolio-card a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            color: #ffd700;
+            background: #222;
+            border-radius: 5px;
+            text-decoration: none;
         }
         .portfolio-card:hover {
             transform: scale(1.05);
         }
-        .search-box input {
-            padding: 8px;
-            width: 100%;
+
+        /* Search Box */
+        .search-box {
+            width: 90%;
             max-width: 400px;
-            box-sizing: border-box;
+            margin: 20px;
+            text-align: center;
         }
-        #discord-icon {
-            margin-top: 20px;
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        /* Discord Button */
+        .discord-button {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #7289da;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .discord-button img {
             width: 40px;
             height: 40px;
-            cursor: pointer;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -79,27 +127,43 @@
         <input type="text" id="searchInput" placeholder="Search for a developer portfolio..." onkeyup="searchPortfolios()">
     </div>
 
-    <section class="featured-developers">
-        <h2>Featured Developers</h2>
+    <section class="portfolio-grid" id="portfolioGrid">
+        <!-- Example Portfolio Cards -->
         <div class="portfolio-card">
+            <img src="https://via.placeholder.com/80" alt="Profile Picture">
             <h2>Jane Doe</h2>
             <p>Data Science, Machine Learning</p>
             <a href="https://example.com/janedoe" target="_blank">View Portfolio</a>
         </div>
-    </section>
-
-    <section class="portfolio-grid" id="portfolioGrid">
         <div class="portfolio-card">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture">
+            <img src="https://via.placeholder.com/80" alt="Profile Picture">
             <h2>Squid</h2>
             <p>Web Development, UI Design</p>
             <a href="https://sites.google.com/view/squids-portfolio?usp=sharing" target="_blank">View Portfolio</a>
         </div>
-        <!-- Additional portfolios as needed -->
+        <div class="portfolio-card">
+            <img src="https://via.placeholder.com/80" alt="Profile Picture">
+            <h2>John Smith</h2>
+            <p>Game Development, Scripting</p>
+            <a href="https://example.com/johnsmith" target="_blank">View Portfolio</a>
+        </div>
+        <div class="portfolio-card">
+            <img src="https://via.placeholder.com/80" alt="Profile Picture">
+            <h2>Lisa Chen</h2>
+            <p>Front-End Development, UX Design</p>
+            <a href="https://example.com/lisachen" target="_blank">View Portfolio</a>
+        </div>
+        <div class="portfolio-card">
+            <img src="https://via.placeholder.com/80" alt="Profile Picture">
+            <h2>Alex Turner</h2>
+            <p>Full Stack Development</p>
+            <a href="https://example.com/alexturner" target="_blank">View Portfolio</a>
+        </div>
     </section>
 
-    <a href="https://discord.com/invite/yourdiscordlink" target="_blank">
-        <img id="discord-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAASFBMVEVHcExYZPFXZPJXZPFXZPFXZPFXZPFXZPFYZPJYZfJYZPJXZfFWY/JhbfNsd/OSmvbS1fv////x8/6pr/hQXvLl5/2Bi/XAxfpYg8U1AAAADHRSTlMADzmFwOT8YtP/sloPkm6kAAABAklEQVR4AYWTBbLFIAxFcXs4lf3vFEg1X2+9JzITIZco40IqJQVnlGBRbewtoxFmziI59rCPRGhIfn5hiLKDYSkJkemZz98689IB9YlCjPMlxnBgr4ejgTebcqltqJacLFBDCQPHJZWX0gIOjHB4Lusbrgu4ciKQI3IVRALMGGaAkqgZNdQRK4U8foc0MtQw46oDbmC9pBkQomwHlBPOlOsW9lL2sK1XUknETNnKpNOl5slKm1AQfsFaxw2eF+RQBB9HwLq3PedxG3CPMyc7yufDqF6b5Q2+jfoFf5SPaH/WPXhQuCqvn5bNVqEXR1GzkST7e0wwxeyX0fSO/T/Uf65DBzQNHUMopTvLAAAAAElFTkSuQmCC" alt="Join our Discord">
+    <a href="https://discord.com/invite/yourdiscordlink" target="_blank" class="discord-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Discord_logo.svg" alt="Discord Icon">
+        Join our Discord
     </a>
 
     <script>
