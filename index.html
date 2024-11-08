@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,21 +16,29 @@
             align-items: center;
             margin: 0;
             overflow: hidden;
+            position: relative;
         }
 
-        /* Grid Background */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-            background-size: 75px 75px;
-            z-index: -1;
+        /* Floating Stars Background */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100vh); }
         }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: #fff;
+            opacity: 0.8;
+            border-radius: 50%;
+            animation: float 10s linear infinite;
+            animation-delay: calc(-10s * var(--delay));
+        }
+
+        /* Random star generation */
+        .star:nth-child(odd) { animation-duration: 12s; }
+        .star:nth-child(even) { animation-duration: 8s; }
 
         header, .search-box, .featured-developers, .portfolio-grid {
             max-width: 800px;
@@ -103,6 +113,17 @@
     </a>
 
     <script>
+        function createStars() {
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement("div");
+                star.className = "star";
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.setProperty("--delay", Math.random());
+                document.body.appendChild(star);
+            }
+        }
+
         function searchPortfolios() {
             const input = document.getElementById('searchInput').value.toLowerCase();
             const portfolioCards = document.getElementsByClassName('portfolio-card');
@@ -112,6 +133,9 @@
                 card.style.display = developerName.includes(input) || specialty.includes(input) ? 'block' : 'none';
             }
         }
+
+        createStars();
     </script>
 </body>
 </html>
+
