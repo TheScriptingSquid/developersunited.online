@@ -4,34 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Portfolio Showcase</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Basic styling for layout */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
             color: #333;
         }
         header, .search-box, .featured-developers, .portfolio-grid, .testimonials, .form-section {
             max-width: 800px;
             margin: 20px auto;
             padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            font-weight: 700;
         }
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+            gap: 30px;
         }
         .portfolio-card {
             border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
+            border-radius: 8px;
             text-align: center;
             background-color: #fff;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         .portfolio-card:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .portfolio-card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
         }
         .search-box input, .form-section input, .form-section button {
             padding: 8px;
@@ -47,20 +60,24 @@
             text-decoration: none;
             color: #0073e6;
         }
-        .featured-developers, .testimonials, .form-section {
-            background-color: #f9f9f9;
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+        button {
+            background-color: #0073e6;
+            border: none;
+            color: white;
+            padding: 10px 15px;
             border-radius: 5px;
-            padding: 15px;
-            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #005bb5;
         }
         .dark-mode {
             background-color: #333;
             color: #fff;
-        }
-        button, select {
-            padding: 8px 12px;
-            cursor: pointer;
-            border-radius: 5px;
         }
         .modal {
             display: none;
@@ -97,77 +114,8 @@
     <section class="featured-developers">
         <h2>Featured Developers</h2>
         <div class="portfolio-card">
+            <img src="https://via.placeholder.com/100" alt="Jane Doe's Profile Picture">
             <h2>Jane Doe</h2>
             <p>Data Science, Machine Learning</p>
             <a href="https://example.com/janedoe" target="_blank">View Portfolio</a>
-        </div>
-    </section>
-
-    <section class="portfolio-grid" id="portfolioGrid">
-        <div class="portfolio-card">
-            <img src="https://yt3.ggpht.com/Yyro1wvm--xSHT6TcFj2EAnIp09MdrHkhhWmIfbDIjY8BRhy-6WxqwVDiaqWPKWvaiGGz7sd=s176-c-k-c0x00ffffff-no-rj-mo" alt="Squid's Profile Picture">
-            <h2>Squid</h2>
-            <p>Web Development, UI Design</p>
-            <a href="https://sites.google.com/view/squids-portfolio?usp=sharing" target="_blank">View Portfolio</a>
-            <div class="social-links">
-                <a href="https://github.com/username" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/username" target="_blank">LinkedIn</a>
-            </div>
-        </div>
-        <!-- Add more portfolio cards as needed -->
-    </section>
-
-    <section class="testimonials">
-        <h2>Testimonials</h2>
-        <p>"Great work and very professional!" - Client A</p>
-        <p>"Highly recommended for web projects." - Client B</p>
-    </section>
-
-    <section class="form-section">
-        <h2>Submit Your Portfolio</h2>
-        <form id="submissionForm">
-            <input type="text" placeholder="Developer Name" required>
-            <input type="text" placeholder="Skills" required>
-            <input type="url" placeholder="Portfolio URL" required>
-            <button type="submit">Submit Portfolio</button>
-        </form>
-    </section>
-
-    <div id="bioModal" class="modal">
-        <div class="modal-content">
-            <span onclick="closeModal()" style="cursor: pointer;">&times;</span>
-            <h2>Developer Name</h2>
-            <p>Bio and project highlights...</p>
-        </div>
-    </div>
-
-    <script>
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
-        }
-
-        function searchPortfolios() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const portfolioCards = document.getElementsByClassName('portfolio-card');
-            for (let card of portfolioCards) {
-                const developerName = card.getElementsByTagName('h2')[0].innerText.toLowerCase();
-                const specialty = card.getElementsByTagName('p')[0].innerText.toLowerCase();
-                card.style.display = developerName.includes(input) || specialty.includes(input) ? 'block' : 'none';
-            }
-        }
-
-        function sortPortfolios(criteria) {
-            // Add sorting logic based on the selected criteria
-            alert('Sorting by ' + criteria);
-        }
-
-        function openModal() {
-            document.getElementById('bioModal').style.display = "block";
-        }
-
-        function closeModal() {
-            document.getElementById('bioModal').style.display = "none";
-        }
-    </script>
-</body>
-</html>
+        </div
