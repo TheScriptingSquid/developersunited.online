@@ -2,18 +2,17 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MYY9TDSQWX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MYY9TDSQWX');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MYY9TDSQWX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MYY9TDSQWX');
+    </script>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9813723908508781"
-     crossorigin="anonymous"></script>
-    
+        crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Portfolio Showcase</title>
@@ -30,20 +29,43 @@
             margin: 0;
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Grid Background */
-        body::before {
-            content: "";
+        /* Particle effect styles */
+        .particle {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-            background-size: 75px 75px;
-            z-index: -1;
+            width: 8px;
+            height: 8px;
+            background-color: red;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particle-animation 0.5s ease-out forwards;
+        }
+
+        @keyframes particle-animation {
+            to {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+        }
+
+        /* Trail effect styles */
+        .trail {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: gold;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: trail-animation 0.8s ease-out forwards;
+        }
+
+        @keyframes trail-animation {
+            to {
+                opacity: 0;
+                transform: translateX(10px);
+            }
         }
 
         /* Header */
@@ -116,25 +138,37 @@
             font-size: 1em;
         }
 
-        /* Particle Styling */
-        .particle {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background-color: #ffd700;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: particle-animation 1s ease-out forwards;
+        /* Discord Button */
+        .discord-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            color: #7289da;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: #2f3136;
         }
 
-        @keyframes particle-animation {
-            0% {
-                transform: scale(1) translate(0, 0);
-                opacity: 1;
+        .discord-button img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
             }
-            100% {
-                transform: scale(0.5) translate(30px, -30px);
-                opacity: 0;
+            .portfolio-card {
+                padding: 15px;
+            }
+            .header h1 {
+                font-size: 1.5em;
             }
         }
     </style>
@@ -149,6 +183,7 @@
     </div>
 
     <section class="portfolio-grid" id="portfolioGrid">
+        <!-- Portfolio Cards Here -->
         <div class="portfolio-card">
             <img src="https://yt3.googleusercontent.com/Yyro1wvm--xSHT6TcFj2EAnIp09MdrHkhhWmIfbDIjY8BRhy-6WxqwVDiaqWPKWvaiGGz7sd=s160-c-k-c0x00ffffff-no-rj" alt="Profile Picture">
             <h2>TheScriptingSquid</h2>
@@ -162,6 +197,11 @@
             <a href="https://example.com/alexturner" target="_blank">View Portfolio</a>
         </div>
     </section>
+
+    <a href="https://discord.gg/2ytqNwq53g" target="_blank" class="discord-button">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="Discord Logo">
+        <span>Join The Developers United Discord Server!</span>
+    </a>
 
     <script>
         function searchPortfolios() {
@@ -179,19 +219,24 @@
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
                 document.body.appendChild(particle);
-
-                // Set random particle position and animation direction
-                const size = Math.random() * 6 + 4;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${event.clientX}px`;
-                particle.style.top = `${event.clientY}px`;
-                particle.style.transform = `translate(${Math.random() * 60 - 30}px, ${Math.random() * 60 - 30}px)`;
-                particle.style.animationDuration = `${Math.random() * 0.8 + 0.5}s`;
-
-                // Remove particle after animation ends
-                particle.addEventListener('animationend', () => particle.remove());
+                const x = event.clientX + (Math.random() * 20 - 10);
+                const y = event.clientY + (Math.random() * 20 - 10);
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+                particle.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
+                particle.style.animationDuration = `${Math.random() * 0.5 + 0.2}s`;
+                setTimeout(() => particle.remove(), 500);
             }
+            createTrail(event.clientX, event.clientY);
+        }
+
+        function createTrail(x, y) {
+            const trail = document.createElement('div');
+            trail.classList.add('trail');
+            trail.style.left = `${x}px`;
+            trail.style.top = `${y}px`;
+            document.body.appendChild(trail);
+            setTimeout(() => trail.remove(), 800);
         }
     </script>
 </body>
