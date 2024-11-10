@@ -19,178 +19,7 @@
         <title>Developer Portfolio Showcase</title>
     <link rel="icon" href="https://lh4.googleusercontent.com/LvtQZ1wpgdt6a5UzgdZYwPHMxjWm4FoSOtM0vhzM7NUOM_1R2rfVszwyuBA3lb4bY0jRwIGXjTo0kPEY487po2xYPBfHpBieoxkBewJAzsLKoq0_LuNffu7pQl7P_QuK1Q=w1280" type="image/x-icon">
 
-    <!-- Your page content goes here -->
-
-    <script>
-        // Create mouse trail
-        document.addEventListener('mousemove', function(event) {
-            var trail = document.createElement('div');
-            trail.classList.add('trail');
-            
-            // Position the trail at the mouse cursor
-            trail.style.left = `${event.pageX}px`;
-            trail.style.top = `${event.pageY}px`;
-            
-            // Append the trail to the body
-            document.body.appendChild(trail);
-            
-            // Remove the trail after animation completes
-            setTimeout(function() {
-                trail.remove();
-            }, 500); // Match duration of fade animation
-        });
-    </script>
-    
-</body>
-</html>
-    <title>Developer Portfolio Showcase</title>
-    <link rel="icon" href="https://lh4.googleusercontent.com/LvtQZ1wpgdt6a5UzgdZYwPHMxjWm4FoSOtM0vhzM7NUOM_1R2rfVszwyuBA3lb4bY0jRwIGXjTo0kPEY487po2xYPBfHpBieoxkBewJAzsLKoq0_LuNffu7pQl7P_QuK1Q=w1280" type="image/x-icon">
-    <style>
-        /* Body and Background */
-        body {
-            font-family: Montserrat,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-            color: #f0f0f0;
-            background-color: #121212;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0;
-            min-height: 100vh;
-            overflow-x: hidden; /* Allows vertical scrolling */
-        }
-
-        /* Grid Background */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-            background-size: 75px 75px;
-            z-index: -1;
-        }
-
-        /* Header */
-        h1, h2 {
-            text-align: center;
-        }
-        header h1 {
-            font-size: 2em;
-            margin: 20px 0;
-            color: #ffd700; /* Gold color for text */
-        }
-
-        /* Portfolio Grid Layout */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
-
-        /* Portfolio Card */
-        .portfolio-card {
-            background-color: #333;
-            border-radius: 10px;
-            padding: 20px;
-            transition: transform 0.2s ease;
-            text-align: center;
-        }
-        .portfolio-card img {
-            border-radius: 50%;
-            width: 80px;
-            height: 80px;
-            margin-bottom: 15px;
-        }
-        .portfolio-card h2 {
-            font-size: 1.5em;
-            margin: 10px 0;
-        }
-        .portfolio-card p {
-            font-size: 1em;
-            color: #b0b0b0;
-        }
-        .portfolio-card a {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            color: #ffd700;
-            background: #222;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        .portfolio-card:hover {
-            transform: scale(1.05);
-        }
-
-        /* Search Box */
-        .search-box {
-            width: 90%;
-            max-width: 400px;
-            margin: 20px;
-            text-align: center;
-        }
-        .search-box input {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-
-        /* Discord Button */
-        .discord-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;  /* Center the text and image */
-            margin: 20px 0;
-            color: #7289da;
-            text-decoration: none;
-            font-size: 1.2em;
-            font-weight: bold;
-            padding: 10px 20px;  /* Add padding around the button for better click area */
-            border-radius: 10px;
-            background-color: #2f3136;  /* A Discord-like background color */
-        }
-
-        .discord-button img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        .discord-button span {
-            display: inline-block;  /* Ensure the text doesn't overlap */
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr; /* Stack cards on smaller screens */
-            }
-            .portfolio-card {
-                padding: 15px;
-            }
-            .header h1 {
-                font-size: 1.5em;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Developer Portfolio Showcase</h1>
-    </header>
-
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search for a developer portfolio..." onkeyup="searchPortfolios()">
-    </div>
- <style>
+  <style>
   /* Basic styles */
   body {
     font-family: Arial, sans-serif;
@@ -455,6 +284,178 @@
 
 </body>
 
+    <!-- Your page content goes here -->
+
+    <script>
+        // Create mouse trail
+        document.addEventListener('mousemove', function(event) {
+            var trail = document.createElement('div');
+            trail.classList.add('trail');
+            
+            // Position the trail at the mouse cursor
+            trail.style.left = `${event.pageX}px`;
+            trail.style.top = `${event.pageY}px`;
+            
+            // Append the trail to the body
+            document.body.appendChild(trail);
+            
+            // Remove the trail after animation completes
+            setTimeout(function() {
+                trail.remove();
+            }, 500); // Match duration of fade animation
+        });
+    </script>
+    
+</body>
+</html>
+    <title>Developer Portfolio Showcase</title>
+    <link rel="icon" href="https://lh4.googleusercontent.com/LvtQZ1wpgdt6a5UzgdZYwPHMxjWm4FoSOtM0vhzM7NUOM_1R2rfVszwyuBA3lb4bY0jRwIGXjTo0kPEY487po2xYPBfHpBieoxkBewJAzsLKoq0_LuNffu7pQl7P_QuK1Q=w1280" type="image/x-icon">
+    <style>
+        /* Body and Background */
+        body {
+            font-family: Montserrat,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+            color: #f0f0f0;
+            background-color: #121212;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden; /* Allows vertical scrolling */
+        }
+
+        /* Grid Background */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 75px 75px;
+            z-index: -1;
+        }
+
+        /* Header */
+        h1, h2 {
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2em;
+            margin: 20px 0;
+            color: #ffd700; /* Gold color for text */
+        }
+
+        /* Portfolio Grid Layout */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        /* Portfolio Card */
+        .portfolio-card {
+            background-color: #333;
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.2s ease;
+            text-align: center;
+        }
+        .portfolio-card img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+        .portfolio-card h2 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        .portfolio-card p {
+            font-size: 1em;
+            color: #b0b0b0;
+        }
+        .portfolio-card a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            color: #ffd700;
+            background: #222;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .portfolio-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Search Box */
+        .search-box {
+            width: 90%;
+            max-width: 400px;
+            margin: 20px;
+            text-align: center;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        /* Discord Button */
+        .discord-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;  /* Center the text and image */
+            margin: 20px 0;
+            color: #7289da;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 10px 20px;  /* Add padding around the button for better click area */
+            border-radius: 10px;
+            background-color: #2f3136;  /* A Discord-like background color */
+        }
+
+        .discord-button img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .discord-button span {
+            display: inline-block;  /* Ensure the text doesn't overlap */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr; /* Stack cards on smaller screens */
+            }
+            .portfolio-card {
+                padding: 15px;
+            }
+            .header h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Developer Portfolio Showcase</h1>
+    </header>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search for a developer portfolio..." onkeyup="searchPortfolios()">
+    </div>
+
     <section class="portfolio-grid" id="portfolioGrid">
         <!-- Portfolio Cards Here -->
         <div class="portfolio-card">
@@ -501,3 +502,5 @@
     </script>
 </body>
 </html>
+
+
