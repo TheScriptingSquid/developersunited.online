@@ -21,11 +21,12 @@
 
   <style>
   /* Basic styles */
-  body {
+body {
     font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Ensure content flows vertically */
+    align-items: flex-start; /* Align content to the top on mobile */
+    justify-content: flex-start; /* Prevent centering vertically */
     height: 100vh;
     margin: 0;
     background-color: #f0f0f5;
@@ -141,7 +142,18 @@
     font-weight: bold;
     display: inline-block;
   }
-
+ /* Responsive Adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .portfolio-grid {
+      grid-template-columns: 1fr; /* Stack portfolio cards on small screens */
+    }
+    .portfolio-card {
+      padding: 15px;
+    }
+    h1 {
+      font-size: 1.5em; /* Reduce header font size on smaller screens */
+    }
+  }
 </style>
 
 <body>
@@ -345,6 +357,7 @@
         header h1 {
             font-size: 2em;
             margin: 20px 0;
+            margin-top: 20px;  /* Add some top margin to the header */
             color: #ffd700; /* Gold color for text */
         }
 
