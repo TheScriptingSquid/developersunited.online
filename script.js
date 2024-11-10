@@ -16,7 +16,7 @@ function incrementVisitCount(portfolioId) {
             console.log(`New visit count for ${portfolioId}:`, data.visitCount);
             document.getElementById(`visitCount${portfolioId}`).textContent = data.visitCount;
         })
-        .catch(error => console.error("Error incrementing visit count:", error));
+        .catch(error => console.error('Error incrementing visit count:', error));
 }
 
 // Optionally, call getVisitCount when the page loads to load the initial count
