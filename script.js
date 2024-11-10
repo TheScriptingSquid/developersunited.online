@@ -2,16 +2,16 @@
 function incrementVisitCount(portfolioId) {
     const visitCountElement = document.getElementById('visitCount' + portfolioId);
     let currentCount = parseInt(visitCountElement.innerText);
-    currentCount++;
+    currentCount++; // Increment the count by 1
     visitCountElement.innerText = currentCount;
 
     // Update count on the server
     updateVisitCountOnServer(portfolioId, currentCount);
 }
 
-// Function to update the visit count on the server (e.g., Glitch API)
+// Function to update the visit count on the server
 function updateVisitCountOnServer(portfolioId, newVisitCount) {
-    fetch('https://portfolio-data-save.glitch.me/updateVisitCount', {
+    fetch('https://your-glitch-project-name.glitch.me/updateVisitCount', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -32,15 +32,11 @@ function updateVisitCountOnServer(portfolioId, newVisitCount) {
 
 // Fetch and display visit count from the server when the page loads
 function loadVisitCount(portfolioId) {
-    fetch('https://portfolio-data-save.glitch.me/getVisitCount?portfolioId=' + portfolioId)
+    fetch('https://your-glitch-project-name.glitch.me/getVisitCount?portfolioId=' + portfolioId)
     .then(response => response.json())
     .then(data => {
         const visitCountElement = document.getElementById('visitCount' + portfolioId);
-        if (data.visitCount !== undefined) {
-            visitCountElement.innerText = data.visitCount;
-        } else {
-            console.error('Visit count not found for portfolio:', portfolioId);
-        }
+        visitCountElement.innerText = data.visitCount; // Set the visit count from the server
     })
     .catch(error => {
         console.error('Error fetching visit count:', error);
@@ -49,8 +45,7 @@ function loadVisitCount(portfolioId) {
 
 // Call the load function for each portfolio when the page loads
 document.addEventListener('DOMContentLoaded', function() {
-    // Load visit count for each portfolio
-    loadVisitCount(1);
-    loadVisitCount(2);
-    loadVisitCount(3);
+    loadVisitCount('portfolio1');
+    loadVisitCount('portfolio2');
+    loadVisitCount('portfolio3');
 });
