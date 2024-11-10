@@ -19,20 +19,6 @@
         <title>Developer Portfolio Showcase</title>
     <link rel="icon" href="https://lh4.googleusercontent.com/LvtQZ1wpgdt6a5UzgdZYwPHMxjWm4FoSOtM0vhzM7NUOM_1R2rfVszwyuBA3lb4bY0jRwIGXjTo0kPEY487po2xYPBfHpBieoxkBewJAzsLKoq0_LuNffu7pQl7P_QuK1Q=w1280" type="image/x-icon">
 <style>
-      /* Styling for the counter */
-  .counter {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .counter-img {
-    width: 100px; /* Adjust size */
-    height: auto;
-    border-radius: 5px;
-  }
-    
   /* Change the color of labels for Name and Website Link */
   label[for="name"], label[for="website"] {
     color: #ff6347;  /* You can choose any color you like (e.g., Tomato color) */
@@ -190,6 +176,21 @@ body {
     h1 {
       font-size: 1.5em; /* Reduce header font size on smaller screens */
     }
+  }
+    /* Styling for the counter */
+  .counter {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .counter img {
+    width: 100%; /* Ensures the counter takes the full width of the container */
+    height: 40px; /* Fixed height for the counter to maintain rectangle shape */
+    object-fit: contain; /* Ensures the counter maintains its aspect ratio without distortion */
+    max-width: 100%; /* Ensures counter doesn't stretch beyond the portfolio card */
   }
 </style>
 
@@ -513,9 +514,12 @@ body {
             <h2>TheScriptingSquid</h2>
             <p>Developer, UI Design, Scripting</p>
             <a href="https://sites.google.com/view/squids-portfolio?usp=sharing" target="_blank">View Portfolio</a>
-                <!-- Add your counter code here -->
-            <div class="counter">
-            <img src="https://hitwebcounter.com/counter/counter.php?page=17308998&style=0038&nbdigits=9&type=page&initCount=0" alt="Counter Widget" class="counter-img">
+            <!-- Counter -->
+          <div class="counter">
+            <img src="https://hitwebcounter.com/counter/counter.php?page=17145372&style=0038&nbdigits=9&type=page&initCount=0" 
+                 alt="Visit counter For Websites" 
+                 title="Counter Widget" 
+                 style="pointer-events: none;" />
           </div>
         </div>
         <div class="portfolio-card">
