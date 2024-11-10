@@ -549,12 +549,6 @@ body {
                 card.style.display = developerName.includes(input) || specialty.includes(input) ? 'block' : 'none';
             }
         }
-
-        function incrementVisitCount(portfolioId) {
-            const visitCountElement = document.getElementById(`visitCount${portfolioId}`);
-            let currentCount = parseInt(visitCountElement.innerText);
-            visitCountElement.innerText = currentCount + 1;
-        }
     </script>
         <script src="script.js"></script>
 </body>
