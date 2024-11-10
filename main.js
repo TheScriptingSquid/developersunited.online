@@ -1,60 +1,34 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 3000;
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyAD9aoxYUTfwJ3_fRLuEvUhZ648wWxNACg",
-  authDomain: "portfolio-data-c02ad.firebaseapp.com",
-  projectId: "portfolio-data-c02ad",
-  storageBucket: "portfolio-data-c02ad.firebasestorage.app",
-  messagingSenderId: "579279372340",
-  appId: "1:579279372340:web:b887ff84259cfce1388a61",
-  measurementId: "G-7EZ3EY9WG3"
+// In-memory storage for visit counts
+const visitCounts = {
+  portfolio1: 0,
+  portfolio2: 0,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// API endpoint to get visit count for a portfolio
+app.get("/visit/:portfolioId", (req, res) => {
+  const portfolioId = req.params.portfolioId;
+  if (visitCounts[portfolioId] !== undefined) {
+    res.json({ visitCount: visitCounts[portfolioId] });
+  } else {
+    res.status(404).json({ message: "Portfolio not found" });
+  }
+});
 
-// Initialize Firestore
-const db = getFirestore(app);
+// API endpoint to increment visit count
+app.post("/visit/:portfolioId", (req, res) => {
+  const portfolioId = req.params.portfolioId;
+  if (visitCounts[portfolioId] !== undefined) {
+    visitCounts[portfolioId]++;
+    res.json({ visitCount: visitCounts[portfolioId] });
+  } else {
+    res.status(404).json({ message: "Portfolio not found" });
+  }
+});
 
-// Function to increment the visit count and store it in Firestore
-function incrementVisitCount(portfolioId) {
-  const visitCountRef = doc(db, 'portfolios', portfolioId);  // Reference to the portfolio document
-
-  getDoc(visitCountRef).then((docSnapshot) => {
-    let visitCount = docSnapshot.exists() ? docSnapshot.data().visitCount : 0;  // Get the current count, default to 0 if not found
-    visitCount++;
-
-    // Update Firestore with the new visit count
-    setDoc(visitCountRef, { visitCount: visitCount }, { merge: true })
-      .then(() => {
-        // Update the visit count on the page
-        document.getElementById(`visitCount${portfolioId}`).textContent = visitCount;
-      })
-      .catch((error) => {
-        console.error("Error updating visit count: ", error);
-      });
-  });
-}
-
-// Load visit counts from Firestore when the page loads
-window.onload = function() {
-  // For portfolio 1
-  getDoc(doc(db, "portfolios", "portfolio1")).then((docSnapshot) => {
-    if (docSnapshot.exists()) {
-      document.getElementById("visitCount1").textContent = docSnapshot.data().visitCount;
-    }
-  });
-
-  // For portfolio 2
-  getDoc(doc(db, "portfolios", "portfolio2")).then((docSnapshot) => {
-    if (docSnapshot.exists()) {
-      document.getElementById("visitCount2").textContent = docSnapshot.data().visitCount;
-    }
-  });
-};
-
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
