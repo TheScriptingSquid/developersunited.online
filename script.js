@@ -11,7 +11,7 @@ function incrementVisitCount(portfolioId) {
 
 // Function to update the visit count on the server
 function updateVisitCountOnServer(portfolioId, newVisitCount) {
-    fetch('https://your-glitch-project-name.glitch.me/updateVisitCount', {
+    fetch('https://portfolio-data-save.glitch.me/updateVisitCount', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ function updateVisitCountOnServer(portfolioId, newVisitCount) {
 
 // Fetch and display visit count from the server when the page loads
 function loadVisitCount(portfolioId) {
-    fetch('https://your-glitch-project-name.glitch.me/getVisitCount?portfolioId=' + portfolioId)
+    fetch('https://portfolio-data-save.glitch.me/getVisitCount?portfolioId=' + portfolioId)
     .then(response => response.json())
     .then(data => {
         const visitCountElement = document.getElementById('visitCount' + portfolioId);
