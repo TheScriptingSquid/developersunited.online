@@ -31,10 +31,21 @@
       background-color: #f0f0f5;
     }
 
-    button {
+    /* Enhanced Open Form button */
+    #openForm {
       padding: 10px 20px;
-      margin-top: 20px;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    #openForm:hover {
+      background-color: #357ABD;
     }
 
     /* Pop-up form container */
@@ -74,6 +85,7 @@
       width: 12px;
       height: 12px;
       border-radius: 50%;
+      cursor: pointer;
     }
 
     .close-btn {
@@ -125,8 +137,8 @@
   <div id="formHeader" class="form-header">
     <div class="window-buttons">
       <div class="window-button close-btn" id="closeForm"></div>
-      <div class="window-button minimize-btn"></div>
-      <div class="window-button maximize-btn"></div>
+      <div class="window-button minimize-btn" id="minimizeForm"></div>
+      <div class="window-button maximize-btn" id="maximizeForm"></div>
     </div>
     <span style="margin-left: auto; margin-right: auto; font-weight: bold; color: #555;">Form Title</span>
   </div>
@@ -144,6 +156,8 @@
   const formContainer = document.getElementById("formContainer");
   const openForm = document.getElementById("openForm");
   const closeForm = document.getElementById("closeForm");
+  const minimizeForm = document.getElementById("minimizeForm");
+  const maximizeForm = document.getElementById("maximizeForm");
   const formHeader = document.getElementById("formHeader");
 
   // Show form when button is clicked
@@ -154,6 +168,29 @@
   // Close form when the close button is clicked
   closeForm.onclick = () => {
     formContainer.style.display = "none";
+  };
+
+  // Minimize form when the minimize button is clicked
+  minimizeForm.onclick = () => {
+    formContainer.style.display = "none";
+  };
+
+  // Toggle maximize when the maximize button is clicked
+  let isMaximized = false;
+  maximizeForm.onclick = () => {
+    if (isMaximized) {
+      formContainer.style.width = "350px";
+      formContainer.style.height = "auto";
+      formContainer.style.top = "50px";
+      formContainer.style.left = "50px";
+      isMaximized = false;
+    } else {
+      formContainer.style.width = "100%";
+      formContainer.style.height = "100%";
+      formContainer.style.top = "0";
+      formContainer.style.left = "0";
+      isMaximized = true;
+    }
   };
 
   // Make the form draggable
