@@ -2,7 +2,7 @@
 
 // Function to fetch the visit count from Glitch API
 function getVisitCount(portfolioId) {
-    fetch(`https://your-project-name.glitch.me/visit/${portfolioId}`)
+    fetch(`https://portfolio-data-save.glitch.me${portfolioId}`)
         .then(response => response.json())
         .then(data => {
             document.getElementById(`visitCount${portfolioId}`).textContent = data.visitCount;
@@ -11,7 +11,7 @@ function getVisitCount(portfolioId) {
 
 // Function to increment the visit count on the Glitch server
 function incrementVisitCount(portfolioId) {
-    fetch(`https://your-project-name.glitch.me/visit/${portfolioId}`, { method: 'POST' })
+    fetch(`https://portfolio-data-save.glitch.me${portfolioId}`, { method: 'POST' })
         .then(response => response.json())
         .then(data => {
             document.getElementById(`visitCount${portfolioId}`).textContent = data.visitCount;
