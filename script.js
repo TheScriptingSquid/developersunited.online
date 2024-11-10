@@ -23,3 +23,12 @@ window.onload = function() {
     getVisitCount('portfolio1');
     getVisitCount('portfolio2');
 };
+function incrementVisitCount(portfolioId) {
+    fetch(`https://your-project-name.glitch.me/visit/${portfolioId}`, { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+            console.log(`New visit count for ${portfolioId}:`, data.visitCount);
+            document.getElementById(`visitCount${portfolioId}`).textContent = data.visitCount;
+        })
+        .catch(error => console.error('Error incrementing visit count:', error));
+}
