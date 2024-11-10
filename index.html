@@ -9,16 +9,6 @@
   gtag('js', new Date());
 
   gtag('config', 'G-MYY9TDSQWX');
-</script>
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9813723908508781"
-     crossorigin="anonymous"></script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Developer Portfolio Showcase</title>
-    <link rel="icon" href="https://lh4.googleusercontent.com/LvtQZ1wpgdt6a5UzgdZYwPHMxjWm4FoSOtM0vhzM7NUOM_1R2rfVszwyuBA3lb4bY0jRwIGXjTo0kPEY487po2xYPBfHpBieoxkBewJAzsLKoq0_LuNffu7pQl7P_QuK1Q=w1280" type="image/x-icon">
-    
   <style>
     /* Basic styles */
     body {
@@ -110,7 +100,7 @@
       margin-bottom: 10px;
     }
 
-    input[type="text"], input[type="email"] {
+    input[type="text"], input[type="url"] {
       width: 100%;
       padding: 8px;
       margin-top: 5px;
@@ -140,13 +130,17 @@
       <div class="window-button minimize-btn" id="minimizeForm"></div>
       <div class="window-button maximize-btn" id="maximizeForm"></div>
     </div>
-    <span style="margin-left: auto; margin-right: auto; font-weight: bold; color: #555;">Form Title</span>
+    <span style="margin-left: auto; margin-right: auto; font-weight: bold; color: #555;">Portfolio Submission</span>
   </div>
-  <form>
+  
+  <!-- Google Form Submission -->
+  <form id="portfolioForm" action="https://docs.google.com/forms/d/e/1FAIpQLSflmBsbUPcIGFgweQ1QGUGrb5YHB0YtaABvhk4-ivquFEyrog/formResponse" method="POST">
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email">
+    <input type="text" id="name" name="entry.1798169770" required>
+
+    <label for="website">Website Link:</label>
+    <input type="url" id="website" name="entry.1246872273" placeholder="https://example.com" required>
+
     <button type="submit">Submit</button>
   </form>
 </div>
@@ -220,6 +214,36 @@
     document.onmousemove = null;
     document.onmouseup = null;
   }
+
+  // Handle form submission with redirect
+  const form = document.getElementById("portfolioForm");
+  
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent default submission
+    
+    // Get form data
+    const name = document.getElementById('name').value;
+    const website = document.getElementById('website').value;
+
+    // Prepare data to send
+    const formData = new FormData();
+    formData.append('entry.1798169770', name);
+    formData.append('entry.1246872273', website);
+
+    // Send form data via fetch
+    await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json',  // This tells the server to respond with JSON
+      }
+    });
+
+    // Redirect to your main website after successful submission
+    window.location.href = 'https://developersunited.online/'; // Replace with your main website URL
+  });
+</script>
+
 </script>
     <style>
         /* Styling for the mouse trail effect */
