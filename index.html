@@ -19,116 +19,131 @@
         <title>Developer Portfolio Showcase</title>
     <link rel="icon" href="https://lh4.googleusercontent.com/LvtQZ1wpgdt6a5UzgdZYwPHMxjWm4FoSOtM0vhzM7NUOM_1R2rfVszwyuBA3lb4bY0jRwIGXjTo0kPEY487po2xYPBfHpBieoxkBewJAzsLKoq0_LuNffu7pQl7P_QuK1Q=w1280" type="image/x-icon">
 
-      <style>
-    /* Basic styles */
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f0f0f5;
-    }
+  <style>
+  /* Basic styles */
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f5;
+  }
 
-    /* Enhanced Open Form button */
-    #openForm {
-      padding: 10px 20px;
-      background-color: #4a90e2;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s ease;
-    }
+  /* Enhanced Open Form button */
+  #openForm {
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
 
-    #openForm:hover {
-      background-color: #357ABD;
-    }
+  #openForm:hover {
+    background-color: #357ABD;
+  }
 
-    /* Pop-up form container */
-    .popup-form {
-      display: none;
-      position: absolute;
-      top: 50px;
-      left: 50px;
-      width: 350px;
-      border-radius: 12px;
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-      cursor: move;
-    }
+  /* Pop-up form container */
+  .popup-form {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 350px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    cursor: move;
+  }
 
-    /* MacBook-style form header */
-    .form-header {
-      display: flex;
-      align-items: center;
-      background-color: #e0e0e0;
-      padding: 8px;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-      cursor: move;
-    }
+  /* MacBook-style form header */
+  .form-header {
+    display: flex;
+    align-items: center;
+    background-color: #e0e0e0;
+    padding: 8px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    cursor: move;
+  }
 
-    /* Mac-style buttons (close, minimize, maximize) */
-    .window-buttons {
-      display: flex;
-      gap: 6px;
-      margin-right: auto;
-      margin-left: 8px;
-    }
+  /* Mac-style buttons (close, minimize, maximize) */
+  .window-buttons {
+    display: flex;
+    gap: 6px;
+    margin-right: auto;
+    margin-left: 8px;
+  }
 
-    .window-button {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      cursor: pointer;
-    }
+  .window-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 
-    .close-btn {
-      background-color: #ff5f56;
-    }
+  .close-btn {
+    background-color: #ff5f56;
+  }
 
-    .minimize-btn {
-      background-color: #ffbd2e;
-    }
+  .minimize-btn {
+    background-color: #ffbd2e;
+  }
 
-    .maximize-btn {
-      background-color: #27c93f;
-    }
+  .maximize-btn {
+    background-color: #27c93f;
+  }
 
-    /* Form content */
-    form {
-      padding: 15px;
-    }
+  /* Form content */
+  form {
+    padding: 15px;
+  }
 
-    label, input {
-      display: block;
-      margin-bottom: 10px;
-    }
+  label, input {
+    display: block;
+    margin-bottom: 10px;
+  }
 
-    input[type="text"], input[type="url"] {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      box-sizing: border-box;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+  input[type="text"], input[type="url"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
 
-    button[type="submit"] {
-      padding: 8px 12px;
-      background-color: #4a4a4a;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-  </style>
-</head>
+  button[type="submit"] {
+    padding: 8px 12px;
+    background-color: #4a4a4a;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  /* Success message styles */
+  .form-status {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #27c93f;
+    font-weight: bold;
+    display: inline-block;
+  }
+
+</style>
+
 <body>
 
 <button id="openForm">Open Form</button>
@@ -151,7 +166,8 @@
     <label for="website">Website Link:</label>
     <input type="url" id="website" name="entry.1246872273" placeholder="https://example.com" required>
 
-    <button type="submit">Submit</button>
+    <button type="submit" id="submitBtn">Submit</button>
+    <span id="formStatus" class="form-status"></span> <!-- Text next to button -->
   </form>
 </div>
 
@@ -163,6 +179,9 @@
   const minimizeForm = document.getElementById("minimizeForm");
   const maximizeForm = document.getElementById("maximizeForm");
   const formHeader = document.getElementById("formHeader");
+  const submitBtn = document.getElementById("submitBtn");
+  const formStatus = document.getElementById("formStatus");
+  const form = document.getElementById("portfolioForm");
 
   // Show form when button is clicked
   openForm.onclick = () => {
@@ -225,12 +244,16 @@
     document.onmouseup = null;
   }
 
-  // Handle form submission with redirect
-  const form = document.getElementById("portfolioForm");
-  
+  // Handle form submission with redirect and success message
   form.addEventListener('submit', async (event) => {
     event.preventDefault(); // Prevent default submission
     
+    // Disable the submit button to prevent multiple submissions
+    submitBtn.disabled = true;
+
+    // Change button text to indicate submission
+    submitBtn.textContent = "Form Submitted!";
+
     // Get form data
     const name = document.getElementById('name').value;
     const website = document.getElementById('website').value;
@@ -249,43 +272,17 @@
       }
     });
 
-    // Redirect to your main website after successful submission
-    window.location.href = 'https://developersunited.online/'; // Replace with your main website URL
+    // Show "Form Submitted" message next to button
+    formStatus.textContent = "Form Submitted";
+
+    // Redirect to your main website after a short delay
+    setTimeout(() => {
+      window.location.href = 'https://developersunited.online/'; // Replace with your main website URL
+    }, 2000); // Adjust delay time (in milliseconds) as needed
   });
 </script>
 
-    <style>
-        /* Styling for the mouse trail effect */
-        .trail {
-            position: absolute;
-            border-radius: 50%;
-            background-color: rgba(0, 150, 255, 0.6); /* Customize color */
-            width: 10px; /* Size of the circle */
-            height: 10px;
-            pointer-events: none; /* Ensure the trail doesn't block other elements */
-            transform: translate(-50%, -50%); /* Center trail position on the cursor */
-            animation: fade 0.5s ease-out forwards;
-        }
-
-        @keyframes fade {
-            to {
-                opacity: 0;
-                transform: scale(0);
-            }
-        }
-        
-        /* Your existing page styles here */
-        body {
-            font-family: Montserrat,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-    </style>
-</head>
-<body>
+</body>
 
     <!-- Your page content goes here -->
 
