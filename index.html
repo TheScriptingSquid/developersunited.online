@@ -3,6 +3,25 @@
 <head>
 <!-- Link to canvas-confetti CDN -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+    // Function to trigger confetti animation
+    function triggerConfetti() {
+        confetti({
+            particleCount: 100,  // Number of confetti pieces
+            spread: 70,          // Spread angle
+            origin: { x: 0.5, y: 0.5 }  // Center of the screen
+        });
+    }
+
+    // Set interval to check if submit button is disabled
+    const checkSubmitButton = setInterval(() => {
+        const submitBtn = document.getElementById('submitBtn');
+        if (submitBtn.disabled) {
+            triggerConfetti(); // Trigger confetti animation when button is disabled
+            clearInterval(checkSubmitButton); // Stop checking once the animation is triggered
+        }
+    }, 100);  // Check every 100ms
+</script>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -359,6 +378,13 @@ body {
 
     // Show "Form Submitted" message next to button
     formStatus.textContent = "Form Submitted";
+      
+    // Trigger confetti animation
+    confetti({
+        particleCount: 100,  // Number of confetti pieces
+        spread: 70,          // Spread angle
+        origin: { x: 0.5, y: 0.5 }  // Center of the screen
+    });
 
     // Redirect to your main website after a short delay
     setTimeout(() => {
