@@ -11,7 +11,7 @@ function incrementVisitCount(portfolioId) {
 
 // Function to update the visit count on the server (e.g., Glitch API)
 function updateVisitCountOnServer(portfolioId, newVisitCount) {
-    fetch('https://portfolio-data-save.glitch.me', {
+    fetch('https://portfolio-data-save.glitch.me/updateVisitCount', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -32,11 +32,15 @@ function updateVisitCountOnServer(portfolioId, newVisitCount) {
 
 // Fetch and display visit count from the server when the page loads
 function loadVisitCount(portfolioId) {
-    fetch('https://portfolio-data-save.glitch.me?portfolioId=' + portfolioId)
+    fetch('https://portfolio-data-save.glitch.me/getVisitCount?portfolioId=' + portfolioId)
     .then(response => response.json())
     .then(data => {
         const visitCountElement = document.getElementById('visitCount' + portfolioId);
-        visitCountElement.innerText = data.visitCount;
+        if (data.visitCount !== undefined) {
+            visitCountElement.innerText = data.visitCount;
+        } else {
+            console.error('Visit count not found for portfolio:', portfolioId);
+        }
     })
     .catch(error => {
         console.error('Error fetching visit count:', error);
@@ -45,6 +49,7 @@ function loadVisitCount(portfolioId) {
 
 // Call the load function for each portfolio when the page loads
 document.addEventListener('DOMContentLoaded', function() {
+    // Load visit count for each portfolio
     loadVisitCount(1);
     loadVisitCount(2);
     loadVisitCount(3);
