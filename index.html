@@ -4,50 +4,49 @@
 <!-- Link to canvas-confetti CDN -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <style>
-    /* Optional: Make sure the canvas is positioned over your content */
     body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
         height: 100vh;
         background-color: #f0f0f0;
+        position: relative;
     }
 
-    /* Create a full-screen canvas that sits above the content */
-    canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none; /* Allow clicks through to the rest of the content */
-        z-index: 9999; /* Ensure it is on top */
+    .glow-ring {
+        position: absolute;
+        border: 3px solid rgba(0, 255, 255, 0.7);
+        border-radius: 50%;
+        transform: scale(0);
+        animation: glow-ring-animation 0.6s forwards;
+    }
+
+    @keyframes glow-ring-animation {
+        0% {
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(2);
+            opacity: 0; /* Faded out by the end of animation */
+        }
     }
 </style>
 <body>
     <script>
-        let canClick = true; // Flag to control spam clicking
+        document.addEventListener('click', function (e) {
+            const glowRing = document.createElement('div');
+            glowRing.classList.add('glow-ring');
+            document.body.appendChild(glowRing);
 
-        // Add a click event listener to the entire document
-        document.addEventListener('click', function(e) {
-            if (canClick) {
-                // Trigger the confetti at the mouse location (e.clientX and e.clientY)
-                confetti({
-                    particleCount: 30,         // Reduced number of confetti particles
-                    spread: 45,                // Reduced spread for smaller effect
-                    origin: { 
-                        x: e.clientX / window.innerWidth, 
-                        y: e.clientY / window.innerHeight 
-                    },  // Normalize the mouse position
-                    scalar: 0.6                // Reduced size of confetti
-                });
+            const size = Math.random() * 20 + 30;  // Random smaller size for ring
+            glowRing.style.width = size + 'px';
+            glowRing.style.height = size + 'px';
+            glowRing.style.left = e.clientX - size / 2 + 'px';
+            glowRing.style.top = e.clientY - size / 2 + 'px';
 
-                // Disable further clicks for 300ms to prevent spamming
-                canClick = false;
-                setTimeout(function() {
-                    canClick = true;
-                }, 300); // 300ms delay before allowing another click
-            }
+            // Remove the ring after animation completes
+            setTimeout(() => glowRing.remove(), 600);  // Matches the animation duration
         });
     </script>
     <!-- Google tag (gtag.js) -->
