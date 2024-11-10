@@ -19,6 +19,171 @@
         <title>Developer Portfolio Showcase</title>
     <link rel="icon" href="https://lh4.googleusercontent.com/LvtQZ1wpgdt6a5UzgdZYwPHMxjWm4FoSOtM0vhzM7NUOM_1R2rfVszwyuBA3lb4bY0jRwIGXjTo0kPEY487po2xYPBfHpBieoxkBewJAzsLKoq0_LuNffu7pQl7P_QuK1Q=w1280" type="image/x-icon">
     
+  <style>
+    /* Basic styles */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f5;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    /* Pop-up form container */
+    .popup-form {
+      display: none;
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      width: 350px;
+      border-radius: 12px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      cursor: move;
+    }
+
+    /* MacBook-style form header */
+    .form-header {
+      display: flex;
+      align-items: center;
+      background-color: #e0e0e0;
+      padding: 8px;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      cursor: move;
+    }
+
+    /* Mac-style buttons (close, minimize, maximize) */
+    .window-buttons {
+      display: flex;
+      gap: 6px;
+      margin-right: auto;
+      margin-left: 8px;
+    }
+
+    .window-button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .close-btn {
+      background-color: #ff5f56;
+    }
+
+    .minimize-btn {
+      background-color: #ffbd2e;
+    }
+
+    .maximize-btn {
+      background-color: #27c93f;
+    }
+
+    /* Form content */
+    form {
+      padding: 15px;
+    }
+
+    label, input {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button[type="submit"] {
+      padding: 8px 12px;
+      background-color: #4a4a4a;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<button id="openForm">Open Form</button>
+
+<div id="formContainer" class="popup-form">
+  <div id="formHeader" class="form-header">
+    <div class="window-buttons">
+      <div class="window-button close-btn" id="closeForm"></div>
+      <div class="window-button minimize-btn"></div>
+      <div class="window-button maximize-btn"></div>
+    </div>
+    <span style="margin-left: auto; margin-right: auto; font-weight: bold; color: #555;">Form Title</span>
+  </div>
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<script>
+  // Get elements
+  const formContainer = document.getElementById("formContainer");
+  const openForm = document.getElementById("openForm");
+  const closeForm = document.getElementById("closeForm");
+  const formHeader = document.getElementById("formHeader");
+
+  // Show form when button is clicked
+  openForm.onclick = () => {
+    formContainer.style.display = "block";
+  };
+
+  // Close form when the close button is clicked
+  closeForm.onclick = () => {
+    formContainer.style.display = "none";
+  };
+
+  // Make the form draggable
+  let offsetX = 0, offsetY = 0, startX, startY;
+
+  // When user clicks on form header, start dragging
+  formHeader.onmousedown = (e) => {
+    e.preventDefault();
+    startX = e.clientX;
+    startY = e.clientY;
+
+    document.onmousemove = dragElement;
+    document.onmouseup = stopDragging;
+  };
+
+  function dragElement(e) {
+    offsetX = startX - e.clientX;
+    offsetY = startY - e.clientY;
+    startX = e.clientX;
+    startY = e.clientY;
+
+    formContainer.style.top = (formContainer.offsetTop - offsetY) + "px";
+    formContainer.style.left = (formContainer.offsetLeft - offsetX) + "px";
+  }
+
+  function stopDragging() {
+    document.onmousemove = null;
+    document.onmouseup = null;
+  }
+</script>
     <style>
         /* Styling for the mouse trail effect */
         .trail {
