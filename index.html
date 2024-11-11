@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style>
-  /* Prevent scrolling */
+  <style>
+  /* Prevent scrolling during animation */
   body, html {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Prevent scrolling */
-    height: 100%; /* Ensure full height */
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling initially */
   }
 
   /* Full-screen overlay for the loading screen */
@@ -53,8 +53,8 @@
     height: 150px;
     position: relative;
     transform-style: preserve-3d;
-    animation: rotateBox 6s linear infinite; /* Smooth, slower rotation */
-    will-change: transform;
+    animation: rotateBox 6s infinite linear;
+    will-change: transform; /* Improve performance */
   }
 
   /* Cube faces */
@@ -69,6 +69,7 @@
     background-position: center;
     border: 5px solid #ffd71e;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    backface-visibility: hidden; /* Prevent glitching and flickering */
   }
 
   /* Positioning the faces */
@@ -131,6 +132,9 @@
         const loadingScreen = document.getElementById('loadingScreen');
         loadingScreen.style.opacity = 0; // Fade out the loading screen
         loadingScreen.style.pointerEvents = 'none'; // Disable interaction after fade
+        
+        // Re-enable scrolling after the animation
+        document.body.style.overflow = 'auto'; // Allow scrolling
       }, 2000); // Set loading duration to 2 seconds
     });
   </script>
