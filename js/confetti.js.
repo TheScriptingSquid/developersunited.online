@@ -1,0 +1,17 @@
+// Function to trigger confetti animation
+function triggerConfetti() {
+    confetti({
+        particleCount: 200,       // Number of confetti pieces
+        spread: 140,              // Spread angle
+        origin: { x: 0.5, y: 0.7 }  // Center of the screen
+    });
+}
+
+// Set interval to check if submit button is disabled
+const checkSubmitButton = setInterval(() => {
+    const submitBtn = document.getElementById('submitBtn');
+    if (submitBtn && submitBtn.disabled) {
+        triggerConfetti();       // Trigger confetti animation when button is disabled
+        clearInterval(checkSubmitButton); // Stop checking once the animation is triggered
+    }
+}, 100);  // Check every 100ms
