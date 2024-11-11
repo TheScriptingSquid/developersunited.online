@@ -2,16 +2,7 @@
 <html lang="en">
 <head>
   <style>
-  /* Prevent scrolling during animation */
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden; /* Prevent scrolling initially */
-    transition: overflow 0.5s ease; /* Smooth transition for overflow */
-  }
-
-  /* Full-screen overlay for the loading screen */
+  /* Full screen overlay for the loading screen */
   #loadingScreen {
     position: fixed;
     top: 0;
@@ -25,6 +16,14 @@
     z-index: 9999;
     overflow: hidden;
     animation: backgroundRotate 4s linear infinite;
+  }
+
+  /* Prevent scrolling during animation */
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling during animation */
   }
 
   /* Particle effects */
@@ -125,6 +124,7 @@
   </div>
 
   <!-- Your content goes here -->
+  <button style="position: absolute; top: 10px; left: 10px;">Click Me!</button>
 
   <script>
     // Hide the loading screen once the page is fully loaded
@@ -133,14 +133,14 @@
         const loadingScreen = document.getElementById('loadingScreen');
         loadingScreen.style.opacity = 0; // Fade out the loading screen
         loadingScreen.style.pointerEvents = 'none'; // Disable interaction after fade
-        
-        // Re-enable scrolling after the animation
-        document.body.style.overflow = 'auto'; // Allow scrolling
+
+        // Add a short delay before re-enabling scrolling
+        setTimeout(function () {
+          document.body.style.overflow = 'auto'; // Allow scrolling
+        }, 500); // Delay to ensure the transition has time to complete
       }, 2000); // Set loading duration to 2 seconds
     });
   </script>
-</body>
-
 <!-- Link to canvas-confetti CDN -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <script>
