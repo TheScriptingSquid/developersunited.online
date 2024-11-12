@@ -281,21 +281,25 @@ body {
     background-color: #f0f0f5;
   }
 
- /* Portfolio Submission Button */
+/* Portfolio Submission Button */
 #openForm {
-  padding: 14px 28px;
+  padding: 14px 28px; /* Keep the original padding for a good button size */
   background: linear-gradient(135deg, #4a90e2, #357ABD); /* Blue gradient */
   color: white;
   border: 2px solid transparent;
   border-radius: 12px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 16px; /* Maintain the font size for readability */
   font-weight: bold;
   text-transform: uppercase;
   position: relative;
-  overflow: hidden;
+  box-sizing: border-box; /* Include padding in the element's total width/height */
   transition: all 0.4s ease;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  display: inline-block; /* Ensure it sizes based on content */
+  white-space: nowrap; /* Prevent text from wrapping */
+  min-width: 180px; /* Ensure the button has a minimum width */
+  text-align: center; /* Center the text within the button */
 }
 
 /* Glowing animation effect */
@@ -343,7 +347,6 @@ body {
   opacity: 1;
   transition: 0s;
 }
-
 
   /* Pop-up form container */
   .popup-form {
@@ -703,13 +706,17 @@ body {
             border-radius: 5px;
             font-size: 1em;
         }
-
-        /* Discord Button */
+        
+            /* Discord Button */
         .discord-button {
+            position: fixed;   /* Keep the button fixed in place */
+            bottom: 20px;      /* Position it 20px from the bottom of the screen */
+            left: 50%;         /* Center it horizontally */
+            transform: translateX(-50%); /* Adjust to perfectly center the button */
             display: flex;
             align-items: center;
             justify-content: center;  /* Center the text and image */
-            margin: 20px 0;
+            margin: 0;               /* Remove margin to avoid overflow */
             color: #7289da;
             text-decoration: none;
             font-size: 1.2em;
@@ -717,14 +724,15 @@ body {
             padding: 10px 20px;  /* Add padding around the button for better click area */
             border-radius: 10px;
             background-color: #2f3136;  /* A Discord-like background color */
+            z-index: 9999;      /* Ensure it appears above other elements */
         }
-
+        
         .discord-button img {
             width: 40px;
             height: 40px;
             margin-right: 10px;
         }
-
+        
         .discord-button span {
             display: inline-block;  /* Ensure the text doesn't overlap */
         }
