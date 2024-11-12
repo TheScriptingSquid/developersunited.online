@@ -707,7 +707,7 @@ body {
             font-size: 1em;
         }
         
-    /* Discord Button */
+ /* Discord Button */
 .discord-button {
     position: fixed;   /* Keep the button fixed in place */
     bottom: 20px;      /* Position it 20px from the bottom of the screen */
@@ -737,15 +737,17 @@ body {
 /* Media query for mobile devices */
 @media (max-width: 768px) {
     .discord-button {
-        bottom: 20px; /* Keep it at the bottom */
-        left: 50%;
-        transform: translateX(-50%); /* Center it horizontally */
-        position: absolute; /* Fix it to the bottom on mobile */
-        width: 100%; /* Full width on mobile */
-        justify-content: center; /* Center text and image */
-        text-align: center; /* Ensure the text is on one line */
+        position: fixed;  /* Keep it fixed at the bottom on mobile */
+        bottom: 20px;     /* Fix it to the bottom */
+        left: 50%;        /* Center horizontally */
+        transform: translateX(-50%); /* Center the button */
+        width: auto;      /* Keep the button size based on content */
+        justify-content: center; /* Keep content centered */
+        text-align: center; /* Ensure text is in one line */
+        padding: 10px 20px;  /* Ensure there's padding */
     }
 }
+
 
 
         /* Responsive Adjustments */
