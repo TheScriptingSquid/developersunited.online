@@ -22,7 +22,8 @@
   
     <!-- Link to the JavaScript file -->
     <script src="mouseTrail.js"></script>
-
+    <link rel="stylesheet" href="glowRing.css">
+    <script src="glowRing.js"></script>
 </body>
  
   <title>Developer Portfolio Showcase</title>
@@ -93,43 +94,6 @@
         background-color: #f0f0f0;
         position: relative;
     }
-
-    .glow-ring {
-        position: absolute;
-        border: 3px solid rgba(0, 255, 255, 0.7);
-        border-radius: 50%;
-        transform: scale(0);
-        animation: glow-ring-animation 0.6s forwards;
-    }
-
-    @keyframes glow-ring-animation {
-        0% {
-            transform: scale(0);
-            opacity: 1;
-        }
-        100% {
-            transform: scale(2);
-            opacity: 0; /* Faded out by the end of animation */
-        }
-    }
-</style>
-<body>
-    <script>
-        document.addEventListener('click', function (e) {
-            const glowRing = document.createElement('div');
-            glowRing.classList.add('glow-ring');
-            document.body.appendChild(glowRing);
-
-            const size = Math.random() * 20 + 30;  // Random smaller size for ring
-            glowRing.style.width = size + 'px';
-            glowRing.style.height = size + 'px';
-            glowRing.style.left = e.clientX - size / 2 + 'px';
-            glowRing.style.top = e.clientY - size / 2 + 'px';
-
-            // Remove the ring after animation completes
-            setTimeout(() => glowRing.remove(), 600);  // Matches the animation duration
-        });
-    </script>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MYY9TDSQWX"></script>
 <script>
@@ -444,10 +408,6 @@ body {
 </script>
 
 </body>
-
-    <!-- Your page content goes here -->
-
-</body>
 </html>
     <title>Developer Portfolio Showcase</title>
     <link rel="icon" href="https://lh4.googleusercontent.com/LvtQZ1wpgdt6a5UzgdZYwPHMxjWm4FoSOtM0vhzM7NUOM_1R2rfVszwyuBA3lb4bY0jRwIGXjTo0kPEY487po2xYPBfHpBieoxkBewJAzsLKoq0_LuNffu7pQl7P_QuK1Q=w1280" type="image/x-icon">
@@ -487,7 +447,7 @@ body {
             font-size: 2em;
             margin: 20px 0;
             margin-top: 20px;  /* Add some top margin to the header */
-            color: #ffd700; /* Gold color for text */
+            color: #ffd700; /* Gold color for the text */
         }
 
         /* Portfolio Grid Layout */
@@ -554,7 +514,7 @@ body {
         .discord-button {
             display: flex;
             align-items: center;
-            justify-content: center;  /* Center the text and image */
+            justify-content: center;  /* Centers the text and image */
             margin: 20px 0;
             color: #7289da;
             text-decoration: none;
@@ -562,7 +522,7 @@ body {
             font-weight: bold;
             padding: 10px 20px;  /* Add padding around the button for better click area */
             border-radius: 10px;
-            background-color: #2f3136;  /* A Discord-like background color */
+            background-color: #2f3136;  /* Discord background color */
         }
 
         .discord-button img {
