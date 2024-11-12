@@ -1,16 +1,15 @@
-// Create a mouse trail effect
-document.addEventListener('mousemove', function(event) {
-    // Create a new div element for each trail
+<script>
+  document.addEventListener('mousemove', function(event) {
     const trail = document.createElement('div');
     trail.classList.add('trail');
-
-    // Position the trail at the mouse cursor
-    trail.style.left = `${event.pageX}px`;
-    trail.style.top = `${event.pageY}px`;
-
-    // Append the trail to the body
     document.body.appendChild(trail);
 
-    // Remove the trail after a short delay to create a fading effect
-    setTimeout(() => trail.remove(), 500);
-});
+    trail.style.left = `${event.pageX - 5}px`; // Subtract half of the trail size to center it on the cursor
+    trail.style.top = `${event.pageY - 5}px`;
+
+    // Remove the trail after a brief duration
+    setTimeout(() => {
+      trail.remove();
+    }, 300); // Adjust the duration of the trail
+  });
+</script>
