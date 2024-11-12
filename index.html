@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Developer Portfolio Showcase</title>
 
   <!-- Website icon link -->
-  <link rel="icon" type="image/png" href="https://lh4.googleusercontent.com/i6hKMAISPRLwG-OeUAj6q6kHuZ9_1CZtk3c9Svz_wPeQxnGv4h-LzkNilHFSa3gJKjstBc8u9uC2DGvijwPuNznFmNk_Hzr4rBb69gSd50Mxv2WMuG4Jo0Qmzj4bc9ix4A=w1280">
+  <link rel="icon" type="image/png" href="images/favicon.png">  <!-- Using a local image for the icon -->
 
   <!-- Link to the JavaScript file -->
   <script src="mouseTrail.js"></script>
@@ -77,6 +76,23 @@
         clearInterval(checkSubmitButton); // Stop checking once the animation is triggered
       }
     }, 100);  // Check every 100ms
+  </script>
+
+  <!-- Mouse trail functionality -->
+  <script>
+    document.addEventListener('mousemove', function(event) {
+      const trail = document.createElement('div');
+      trail.classList.add('trail');
+      document.body.appendChild(trail);
+
+      trail.style.left = `${event.pageX - 5}px`;  // Adjust based on trail size
+      trail.style.top = `${event.pageY - 5}px`;
+
+      // Remove the trail after a brief duration
+      setTimeout(() => {
+        trail.remove();
+      }, 300);  // Adjust the duration of the trail
+    });
   </script>
 </body>
 
