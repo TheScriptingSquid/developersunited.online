@@ -1,0 +1,19 @@
+/* Glow Ring Styles */
+.glow-ring {
+    position: absolute;
+    border: 3px solid rgba(0, 255, 255, 0.7);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: glow-ring-animation 0.6s forwards;
+}
+
+@keyframes glow-ring-animation {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0; /* Fades out by the end of animation */
+    }
+}
