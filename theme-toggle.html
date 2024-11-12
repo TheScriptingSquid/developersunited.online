@@ -21,7 +21,7 @@
 
         /* Dark theme (night) */
         body.night {
-            background-color: #333;
+            background-color: #2d2d2d;
             color: #f4f4f4;
         }
 
@@ -30,28 +30,52 @@
             position: fixed;
             bottom: 20px;
             left: 20px;
-            padding: 10px 15px;
+            padding: 12px 18px;
             border: none;
-            background-color: #0066cc;
+            background-color: #ffcc00; /* Bright button color for day */
             color: #fff;
-            font-size: 18px;
+            font-size: 24px;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            border-radius: 50%;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            outline: none; /* Remove outline when clicked */
+        }
+
+        /* Remove any unwanted outline or border when focused */
+        .theme-toggle:focus {
+            outline: none;
+            border: none;
         }
 
         .theme-toggle:hover {
-            background-color: #005bb5;
+            transform: scale(1.1);
+            background-color: #ffb700;
         }
 
-        /* Button icon change (moon to sun) */
-        .theme-toggle.night {
+        /* Dark mode button styling */
+        body.night .theme-toggle {
+            background-color: #333; /* Dark button for night mode */
+            color: #ffcc00; /* Bright icon for night */
+        }
+
+        .theme-toggle:before {
+            content: "🌙"; /* Default to moon icon */
+            font-size: 28px;
+            transition: content 0.3s ease;
+        }
+
+        /* Change to sun icon in day mode */
+        body.day .theme-toggle:before {
             content: "🌞";
         }
     </style>
 </head>
 <body>
-    <button class="theme-toggle" id="themeToggle">🌙</button>
+
+    <h1>Welcome to My Stylish Website!</h1>
+
+    <button class="theme-toggle" id="themeToggle"></button>
 
     <script>
         const themeToggleButton = document.getElementById('themeToggle');
@@ -59,7 +83,6 @@
         // Check for saved theme preference in localStorage
         if (localStorage.getItem('theme') === 'night') {
             document.body.classList.add('night');
-            themeToggleButton.textContent = '🌞'; // Change button to sun icon
         }
 
         themeToggleButton.addEventListener('click', () => {
@@ -68,12 +91,11 @@
             
             if (document.body.classList.contains('night')) {
                 localStorage.setItem('theme', 'night');
-                themeToggleButton.textContent = '🌞'; // Change button to sun icon
             } else {
                 localStorage.setItem('theme', 'day');
-                themeToggleButton.textContent = '🌙'; // Change button to moon icon
             }
         });
     </script>
+
 </body>
 </html>
