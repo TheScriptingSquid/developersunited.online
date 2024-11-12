@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-          /* Define the style for the mouse trail */
+          /* Defines the style for the mouse trail */
           .trail {
               position: absolute;
               width: 10px;
@@ -19,12 +19,12 @@
           }
       </style>
   </head>
-    <h1>Mouse Trail Effect Demo</h1>
-    <p>Move your mouse to see the trail effect!</p>
-
+  
     <!-- Link to the JavaScript file -->
     <script src="mouseTrail.js"></script>
+
 </body>
+ 
   <title>Developer Portfolio Showcase</title>
        
            <!-- Website icon link -->
@@ -447,26 +447,6 @@ body {
 
     <!-- Your page content goes here -->
 
-    <script>
-        // Create mouse trail
-        document.addEventListener('mousemove', function(event) {
-            var trail = document.createElement('div');
-            trail.classList.add('trail');
-            
-            // Position the trail at the mouse cursor
-            trail.style.left = `${event.pageX}px`;
-            trail.style.top = `${event.pageY}px`;
-            
-            // Append the trail to the body
-            document.body.appendChild(trail);
-            
-            // Remove the trail after animation completes
-            setTimeout(function() {
-                trail.remove();
-            }, 500); // Match duration of fade animation
-        });
-    </script>
-    
 </body>
 </html>
     <title>Developer Portfolio Showcase</title>
