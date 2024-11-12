@@ -1,67 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Developer Portfolio Showcase</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Portfolio Showcase</title>
 
-    <!-- Website icon link -->
-    <link rel="icon" type="image/png" href="https://lh4.googleusercontent.com/i6hKMAISPRLwG-OeUAj6q6kHuZ9_1CZtk3c9Svz_wPeQxnGv4h-LzkNilHFSa3gJKjstBc8u9uC2DGvijwPuNznFmNk_Hzr4rBb69gSd50Mxv2WMuG4Jo0Qmzj4bc9ix4A=w1280">
+  <!-- Website icon link -->
+  <link rel="icon" type="image/png" href="https://lh4.googleusercontent.com/i6hKMAISPRLwG-OeUAj6q6kHuZ9_1CZtk3c9Svz_wPeQxnGv4h-LzkNilHFSa3gJKjstBc8u9uC2DGvijwPuNznFmNk_Hzr4rBb69gSd50Mxv2WMuG4Jo0Qmzj4bc9ix4A=w1280">
 
-    <!-- Link to the glow ring CSS file -->
-    <link rel="stylesheet" href="glowRing.css">
+  <!-- Link to the JavaScript file -->
+  <script src="mouseTrail.js"></script>
 
-    <!-- Canvas-confetti library -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <!-- Link to canvas-confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
-    <style>
-        /* Defines the style for the mouse trail */
-        .trail {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: rgba(0, 150, 255, 0.5); /* Adjust color and transparency */
-            border-radius: 50%;
-            pointer-events: none;
-            transition: opacity 0.5s;
-        }
-    </style>
-</head>
-
-<body>
-    <h1>Mouse Trail and Glow Ring Effect Demo</h1>
-    <p>Move your mouse or click to see the effects!</p>
-    <button onclick="triggerConfetti()">Trigger Confetti</button>
-
-    <!-- Link to the JavaScript files for effects -->
-    <script src="mouseTrail.js"></script>
-    <script src="glowRing.js"></script>
-
-    <script>
-        // Function to trigger confetti animation
-        function triggerConfetti() {
-            confetti({
-                particleCount: 200,  // Number of confetti pieces
-                spread: 140,         // Spread angle
-                origin: { x: 0.5, y: 0.7 }  // Center of the screen
-            });
-        }
-    </script>
-</body>
-
-    // Set interval to check if submit button is disabled
-    const checkSubmitButton = setInterval(() => {
-        const submitBtn = document.getElementById('submitBtn');
-        if (submitBtn.disabled) {
-            triggerConfetti(); // Trigger confetti animation when button is disabled
-            clearInterval(checkSubmitButton); // Stop checking once the animation is triggered
-        }
-    }, 100);  // Check every 100ms
-</script>
-
-  <!-- Loading Screen-->
+  <!-- Loading Screen CSS -->
   <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Inline styles for mouse trail -->
+  <style>
+    /* Defines the style for the mouse trail */
+    .trail {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: rgba(0, 150, 255, 0.5); /* Adjust color and transparency */
+      border-radius: 50%;
+      pointer-events: none;
+      transition: opacity 0.5s;
+    }
+  </style>
 </head>
+
 <body>
   <!-- Loading Screen HTML -->
   <div id="loadingScreen">
@@ -84,12 +55,31 @@
 
   <!-- Your main content goes here -->
 
-  <!-- Link to the external JavaScript file in the js folder -->
+  <!-- External JavaScript file -->
   <script src="js/scripts.js"></script>
+
+  <!-- Script to trigger confetti when the submit button is disabled -->
+  <script>
+    // Function to trigger confetti animation
+    function triggerConfetti() {
+      confetti({
+        particleCount: 200,  // Number of confetti pieces
+        spread: 140,          // Spread angle
+        origin: { x: 0.5, y: 0.7}  // Center of the screen
+      });
+    }
+
+    // Set interval to check if submit button is disabled
+    const checkSubmitButton = setInterval(() => {
+      const submitBtn = document.getElementById('submitBtn');
+      if (submitBtn.disabled) {
+        triggerConfetti(); // Trigger confetti animation when button is disabled
+        clearInterval(checkSubmitButton); // Stop checking once the animation is triggered
+      }
+    }, 100);  // Check every 100ms
+  </script>
 </body>
 
-
-     
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -99,6 +89,43 @@
         background-color: #f0f0f0;
         position: relative;
     }
+
+    .glow-ring {
+        position: absolute;
+        border: 3px solid rgba(0, 255, 255, 0.7);
+        border-radius: 50%;
+        transform: scale(0);
+        animation: glow-ring-animation 0.6s forwards;
+    }
+
+    @keyframes glow-ring-animation {
+        0% {
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(2);
+            opacity: 0; /* Faded out by the end of animation */
+        }
+    }
+</style>
+<body>
+    <script>
+        document.addEventListener('click', function (e) {
+            const glowRing = document.createElement('div');
+            glowRing.classList.add('glow-ring');
+            document.body.appendChild(glowRing);
+
+            const size = Math.random() * 20 + 30;  // Random smaller size for ring
+            glowRing.style.width = size + 'px';
+            glowRing.style.height = size + 'px';
+            glowRing.style.left = e.clientX - size / 2 + 'px';
+            glowRing.style.top = e.clientY - size / 2 + 'px';
+
+            // Remove the ring after animation completes
+            setTimeout(() => glowRing.remove(), 600);  // Matches the animation duration
+        });
+    </script>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MYY9TDSQWX"></script>
 <script>
@@ -413,6 +440,10 @@ body {
 </script>
 
 </body>
+
+    <!-- Your page content goes here -->
+
+</body>
 </html>
     <title>Developer Portfolio Showcase</title>
     <link rel="icon" href="https://lh4.googleusercontent.com/LvtQZ1wpgdt6a5UzgdZYwPHMxjWm4FoSOtM0vhzM7NUOM_1R2rfVszwyuBA3lb4bY0jRwIGXjTo0kPEY487po2xYPBfHpBieoxkBewJAzsLKoq0_LuNffu7pQl7P_QuK1Q=w1280" type="image/x-icon">
@@ -452,7 +483,7 @@ body {
             font-size: 2em;
             margin: 20px 0;
             margin-top: 20px;  /* Add some top margin to the header */
-            color: #ffd700; /* Gold color for the text */
+            color: #ffd700; /* Gold color for text */
         }
 
         /* Portfolio Grid Layout */
@@ -519,7 +550,7 @@ body {
         .discord-button {
             display: flex;
             align-items: center;
-            justify-content: center;  /* Centers the text and image */
+            justify-content: center;  /* Center the text and image */
             margin: 20px 0;
             color: #7289da;
             text-decoration: none;
@@ -527,7 +558,7 @@ body {
             font-weight: bold;
             padding: 10px 20px;  /* Add padding around the button for better click area */
             border-radius: 10px;
-            background-color: #2f3136;  /* Discord background color */
+            background-color: #2f3136;  /* A Discord-like background color */
         }
 
         .discord-button img {
