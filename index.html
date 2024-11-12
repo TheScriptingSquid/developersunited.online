@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mouse Trail and Glow Ring Effect</title>
+    <title>Developer Portfolio Showcase</title>
+
+    <!-- Website icon link -->
+    <link rel="icon" type="image/png" href="https://lh4.googleusercontent.com/i6hKMAISPRLwG-OeUAj6q6kHuZ9_1CZtk3c9Svz_wPeQxnGv4h-LzkNilHFSa3gJKjstBc8u9uC2DGvijwPuNznFmNk_Hzr4rBb69gSd50Mxv2WMuG4Jo0Qmzj4bc9ix4A=w1280">
 
     <!-- Link to the glow ring CSS file -->
     <link rel="stylesheet" href="glowRing.css">
+
+    <!-- Canvas-confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
     <style>
         /* Defines the style for the mouse trail */
@@ -21,32 +27,27 @@
         }
     </style>
 </head>
+
 <body>
     <h1>Mouse Trail and Glow Ring Effect Demo</h1>
     <p>Move your mouse or click to see the effects!</p>
+    <button onclick="triggerConfetti()">Trigger Confetti</button>
 
-    <!-- Link to the JavaScript files -->
+    <!-- Link to the JavaScript files for effects -->
     <script src="mouseTrail.js"></script>
     <script src="glowRing.js"></script>
-</body>
 
-  <title>Developer Portfolio Showcase</title>
-       
-           <!-- Website icon link -->
-       <link rel="icon" type="image/png" href="https://lh4.googleusercontent.com/i6hKMAISPRLwG-OeUAj6q6kHuZ9_1CZtk3c9Svz_wPeQxnGv4h-LzkNilHFSa3gJKjstBc8u9uC2DGvijwPuNznFmNk_Hzr4rBb69gSd50Mxv2WMuG4Jo0Qmzj4bc9ix4A=w1280">
-<html lang="en">
-</head>
-  <!-- Link to canvas-confetti CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>  
-<script>
-    // Function to trigger confetti animation
-    function triggerConfetti() {
-        confetti({
-            particleCount: 200,  // Number of confetti pieces
-            spread: 140,          // Spread angle
-            origin: { x: 0.5, y: 0.7}  // Center of the screen
-        });
-    }
+    <script>
+        // Function to trigger confetti animation
+        function triggerConfetti() {
+            confetti({
+                particleCount: 200,  // Number of confetti pieces
+                spread: 140,         // Spread angle
+                origin: { x: 0.5, y: 0.7 }  // Center of the screen
+            });
+        }
+    </script>
+</body>
 
     // Set interval to check if submit button is disabled
     const checkSubmitButton = setInterval(() => {
