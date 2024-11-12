@@ -707,35 +707,46 @@ body {
             font-size: 1em;
         }
         
-            /* Discord Button */
-        .discord-button {
-            position: fixed;   /* Keep the button fixed in place */
-            bottom: 20px;      /* Position it 20px from the bottom of the screen */
-            left: 50%;         /* Center it horizontally */
-            transform: translateX(-50%); /* Adjust to perfectly center the button */
-            display: flex;
-            align-items: center;
-            justify-content: center;  /* Center the text and image */
-            margin: 0;               /* Remove margin to avoid overflow */
-            color: #7289da;
-            text-decoration: none;
-            font-size: 1.2em;
-            font-weight: bold;
-            padding: 10px 20px;  /* Add padding around the button for better click area */
-            border-radius: 10px;
-            background-color: #2f3136;  /* A Discord-like background color */
-            z-index: 9999;      /* Ensure it appears above other elements */
-        }
-        
-        .discord-button img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-        }
-        
-        .discord-button span {
-            display: inline-block;  /* Ensure the text doesn't overlap */
-        }
+    /* Discord Button */
+.discord-button {
+    position: fixed;   /* Keep the button fixed in place */
+    bottom: 20px;      /* Position it 20px from the bottom of the screen */
+    left: 50%;         /* Center it horizontally */
+    transform: translateX(-50%); /* Adjust to perfectly center the button */
+    display: flex;
+    align-items: center;
+    justify-content: center;  /* Center the text and image */
+    margin: 0;               /* Remove margin to avoid overflow */
+    color: #7289da;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px 20px;  /* Add padding around the button for better click area */
+    border-radius: 10px;
+    background-color: #2f3136;  /* A Discord-like background color */
+    z-index: 9999;      /* Ensure it appears above other elements */
+}
+
+/* Discord Button Image */
+.discord-button img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .discord-button {
+        bottom: 20px; /* Keep it at the bottom */
+        left: 50%;
+        transform: translateX(-50%); /* Center it horizontally */
+        position: absolute; /* Fix it to the bottom on mobile */
+        width: 100%; /* Full width on mobile */
+        justify-content: center; /* Center text and image */
+        text-align: center; /* Ensure the text is on one line */
+    }
+}
+
 
         /* Responsive Adjustments */
         @media (max-width: 768px) {
