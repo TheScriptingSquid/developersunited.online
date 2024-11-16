@@ -33,7 +33,7 @@
 </head>
 
 <body>
-  
+
   <style>
         /* General body styles */
         body {
@@ -100,15 +100,6 @@
             content: "🌞";
         }
     </style>
-    <style>
-      /* Custom CSS for the Hitwebcounter */
-      .hitwebcounter {
-          width: auto;          /* Ensures the width is auto and maintains aspect ratio */
-          height: 30px;         /* Set a fixed height for the counter */
-          border-radius: 0;     /* Removes any circular or rounded border */
-          display: inline-block; /* Keeps it inline with other elements */
-      }
-  </style>
 </head>
 <body>
 
@@ -781,19 +772,12 @@ body {
     </div>
 
     <section class="portfolio-grid" id="portfolioGrid">
+        <!-- Portfolio Cards Here -->
         <div class="portfolio-card">
             <img src="https://yt3.googleusercontent.com/Yyro1wvm--xSHT6TcFj2EAnIp09MdrHkhhWmIfbDIjY8BRhy-6WxqwVDiaqWPKWvaiGGz7sd=s160-c-k-c0x00ffffff-no-rj" alt="Profile Picture">
             <h2>TheScriptingSquid</h2>
             <p>Developer, UI Design, Scripting</p>
-            <!-- View Portfolio button -->
-            <a href="https://sites.google.com/view/squids-portfolio?usp=sharing" target="_blank" class="view-portfolio-link" data-portfolio="portfolio1">View Portfolio</a>
-        
-            <!-- hitwebcounter Code START -->
-            <a href="https://www.hitwebcounter.com" target="_blank">
-                <img src="https://hitwebcounter.com/counter/counter.php?page=17390572&style=0006&nbdigits=5&type=page&initCount=0" title="Counter Widget" alt="Visit counter For Websites" border="0" />
-            </a>
-            <!-- hitwebcounter Code END -->
-        </div>
+            <a href="https://sites.google.com/view/squids-portfolio?usp=sharing" target="_blank">View Portfolio</a>
         </div>
         <div class="portfolio-card">
             <img src="https://yt3.googleusercontent.com/EcvjDpuwPqjl_UmeYJMWrClU6BQTYWwkkEzIljxmEGnl4TK3N93U02bnXd5mjizjcdsatRmb4zg=s160-c-k-c0x00ffffff-no-rj" alt="Profile Picture">
@@ -826,7 +810,6 @@ body {
         <span>Join The Developers United Discord Server!</span>
     </a>
 
-   
     <script>
         function searchPortfolios() {
             const input = document.getElementById('searchInput').value.toLowerCase();
@@ -837,5 +820,6 @@ body {
                 card.style.display = developerName.includes(input) || specialty.includes(input) ? 'block' : 'none';
             }
         }
+    </script>
 </body>
 </html>
