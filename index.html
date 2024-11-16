@@ -812,6 +812,7 @@ body {
         <span>Join The Developers United Discord Server!</span>
     </a>
 
+   
     <script>
         function searchPortfolios() {
             const input = document.getElementById('searchInput').value.toLowerCase();
@@ -822,9 +823,9 @@ body {
                 card.style.display = developerName.includes(input) || specialty.includes(input) ? 'block' : 'none';
             }
         }
-         <script>
+
         const portfolioLinks = document.querySelectorAll('.portfolio-link');
-        
+
         // Event listener for when the portfolio link is clicked
         portfolioLinks.forEach(link => {
             link.addEventListener('click', function(event) {
@@ -837,14 +838,14 @@ body {
                 let visitCount = parseInt(visitCounterElement.innerText.replace('Visits: ', ''));
                 visitCount += 1;
                 visitCounterElement.innerText = `Visits: ${visitCount}`;
-                
+
                 // Send POST request to update visit count on Google Sheets
                 fetch('https://script.google.com/macros/s/AKfycbzWihDO7n5ccurNeo_hWgxCAjjO-2hpvDL0On-9yn5wDKzV7wDGxTVXibTAc3C3qXWl/exec', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ portfolioId: portfolioId })
+                    body: JSON.stringify({ portfolioId: portfolioId, visitCount: visitCount }) // Send updated visit count as well
                 })
                 .then(response => response.json())
                 .then(data => {
@@ -862,12 +863,15 @@ body {
                 const portfolioId = link.getAttribute('data-portfolio');
                 
                 // Fetch the current visit count from Google Sheets
-                fetch('https://script.google.com/macros/s/AKfycbzWihDO7n5ccurNeo_hWgxCAjjO-2hpvDL0On-9yn5wDKzV7wDGxTVXibTAc3C3qXWl/exec' + portfolioId)
+                fetch('https://script.google.com/macros/s/AKfycbzWihDO7n5ccurNeo_hWgxCAjjO-2hpvDL0On-9yn5wDKzV7wDGxTVXibTAc3C3qXWl/exec?portfolioId=' + portfolioId)
                     .then(response => response.json())
                     .then(data => {
                         const visitCount = data[portfolioId] || 0;
                         const visitCounterElement = document.getElementById(`visit-count-${portfolioId}`);
                         visitCounterElement.innerText = `Visits: ${visitCount}`;
+                    })
+                    .catch(error => {
+                        console.error("Error fetching visit count:", error);
                     });
             });
         });
