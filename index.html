@@ -33,57 +33,6 @@
 </head>
 
 <body>
-
-    <script>
-        const portfolioLinks = document.querySelectorAll('.portfolio-link');
-        
-        // Event listener for when the portfolio link is clicked
-        portfolioLinks.forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                
-                const portfolioId = link.getAttribute('data-portfolio');
-                
-                // Increase the visit counter on the page
-                const visitCounterElement = document.getElementById(`visit-count-${portfolioId}`);
-                let visitCount = parseInt(visitCounterElement.innerText.replace('Visits: ', ''));
-                visitCount += 1;
-                visitCounterElement.innerText = `Visits: ${visitCount}`;
-                
-                // Send POST request to update visit count on Google Sheets
-                fetch('https://script.google.com/macros/s/AKfycbzWihDO7n5ccurNeo_hWgxCAjjO-2hpvDL0On-9yn5wDKzV7wDGxTVXibTAc3C3qXWl/exec', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ portfolioId: portfolioId })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log("Visit count updated successfully:", data);
-                })
-                .catch(error => {
-                    console.error("Error updating visit count:", error);
-                });
-            });
-        });
-
-        // Fetch the initial visit count when the page loads
-        window.addEventListener('load', function() {
-            portfolioLinks.forEach(link => {
-                const portfolioId = link.getAttribute('data-portfolio');
-                
-                // Fetch the current visit count from Google Sheets
-                fetch('https://script.google.com/macros/s/AKfycbzWihDO7n5ccurNeo_hWgxCAjjO-2hpvDL0On-9yn5wDKzV7wDGxTVXibTAc3C3qXWl/exec' + portfolioId)
-                    .then(response => response.json())
-                    .then(data => {
-                        const visitCount = data[portfolioId] || 0;
-                        const visitCounterElement = document.getElementById(`visit-count-${portfolioId}`);
-                        visitCounterElement.innerText = `Visits: ${visitCount}`;
-                    });
-            });
-        });
-    </script>
   
   <style>
         /* General body styles */
@@ -873,5 +822,55 @@ body {
                 card.style.display = developerName.includes(input) || specialty.includes(input) ? 'block' : 'none';
             }
         }
+         <script>
+        const portfolioLinks = document.querySelectorAll('.portfolio-link');
+        
+        // Event listener for when the portfolio link is clicked
+        portfolioLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                
+                const portfolioId = link.getAttribute('data-portfolio');
+                
+                // Increase the visit counter on the page
+                const visitCounterElement = document.getElementById(`visit-count-${portfolioId}`);
+                let visitCount = parseInt(visitCounterElement.innerText.replace('Visits: ', ''));
+                visitCount += 1;
+                visitCounterElement.innerText = `Visits: ${visitCount}`;
+                
+                // Send POST request to update visit count on Google Sheets
+                fetch('https://script.google.com/macros/s/AKfycbzWihDO7n5ccurNeo_hWgxCAjjO-2hpvDL0On-9yn5wDKzV7wDGxTVXibTAc3C3qXWl/exec', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ portfolioId: portfolioId })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Visit count updated successfully:", data);
+                })
+                .catch(error => {
+                    console.error("Error updating visit count:", error);
+                });
+            });
+        });
+
+        // Fetch the initial visit count when the page loads
+        window.addEventListener('load', function() {
+            portfolioLinks.forEach(link => {
+                const portfolioId = link.getAttribute('data-portfolio');
+                
+                // Fetch the current visit count from Google Sheets
+                fetch('https://script.google.com/macros/s/AKfycbzWihDO7n5ccurNeo_hWgxCAjjO-2hpvDL0On-9yn5wDKzV7wDGxTVXibTAc3C3qXWl/exec' + portfolioId)
+                    .then(response => response.json())
+                    .then(data => {
+                        const visitCount = data[portfolioId] || 0;
+                        const visitCounterElement = document.getElementById(`visit-count-${portfolioId}`);
+                        visitCounterElement.innerText = `Visits: ${visitCount}`;
+                    });
+            });
+        });
+    </script>
 </body>
 </html>
