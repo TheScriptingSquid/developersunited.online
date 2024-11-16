@@ -51,7 +51,7 @@
                 visitCounterElement.innerText = `Visits: ${visitCount}`;
                 
                 // Send POST request to update visit count on Google Sheets
-                fetch('https://script.google.com/macros/s/AKfycbwBD9c81brQkUz9ei9oEosLp33Jj-AEeF7SN9jRErnD09iptQgFtplM9jLQVBe9wsu2/exec', {
+                fetch('https://script.google.com/macros/s/AKfycbzWihDO7n5ccurNeo_hWgxCAjjO-2hpvDL0On-9yn5wDKzV7wDGxTVXibTAc3C3qXWl/exec', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -74,7 +74,7 @@
                 const portfolioId = link.getAttribute('data-portfolio');
                 
                 // Fetch the current visit count from Google Sheets
-                fetch('https://script.google.com/macros/s/AKfycbwBD9c81brQkUz9ei9oEosLp33Jj-AEeF7SN9jRErnD09iptQgFtplM9jLQVBe9wsu2/exec?portfolioId=' + portfolioId)
+                fetch('https://script.google.com/macros/s/AKfycbzWihDO7n5ccurNeo_hWgxCAjjO-2hpvDL0On-9yn5wDKzV7wDGxTVXibTAc3C3qXWl/exec' + portfolioId)
                     .then(response => response.json())
                     .then(data => {
                         const visitCount = data[portfolioId] || 0;
@@ -829,12 +829,14 @@ body {
             <h2>TheScriptingSquid</h2>
             <p>Developer, UI Design, Scripting</p>
             <a href="https://sites.google.com/view/squids-portfolio?usp=sharing" target="_blank">View Portfolio</a>
+            <div id="visit-count-portfolio1" class="visit-counter">Visits: 0</div>
         </div>
         <div class="portfolio-card">
             <img src="https://yt3.googleusercontent.com/EcvjDpuwPqjl_UmeYJMWrClU6BQTYWwkkEzIljxmEGnl4TK3N93U02bnXd5mjizjcdsatRmb4zg=s160-c-k-c0x00ffffff-no-rj" alt="Profile Picture">
             <h2>Soap64</h2>
             <p>‎Music, Graphic Design</p>
             <a href="https://soapssite.firebaseapp.com/" target="_blank">View Portfolio</a>
+            <div id="visit-count-portfolio2" class="visit-counter">Visits: 0</div>
         </div>
         <div class="portfolio-card">
             <img src="https://cdn2.scratch.mit.edu/get_image/user/16170417_48x48.png" alt="Profile Picture">
