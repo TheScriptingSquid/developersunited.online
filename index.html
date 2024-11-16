@@ -100,6 +100,15 @@
             content: "🌞";
         }
     </style>
+    <style>
+      /* Custom CSS for the Hitwebcounter */
+      .hitwebcounter {
+          width: auto;          /* Ensures the width is auto and maintains aspect ratio */
+          height: 30px;         /* Set a fixed height for the counter */
+          border-radius: 0;     /* Removes any circular or rounded border */
+          display: inline-block; /* Keeps it inline with other elements */
+      }
+  </style>
 </head>
 <body>
 
@@ -772,23 +781,25 @@ body {
     </div>
 
     <section class="portfolio-grid" id="portfolioGrid">
-        <!-- Portfolio Cards Here -->
         <div class="portfolio-card">
             <img src="https://yt3.googleusercontent.com/Yyro1wvm--xSHT6TcFj2EAnIp09MdrHkhhWmIfbDIjY8BRhy-6WxqwVDiaqWPKWvaiGGz7sd=s160-c-k-c0x00ffffff-no-rj" alt="Profile Picture">
             <h2>TheScriptingSquid</h2>
             <p>Developer, UI Design, Scripting</p>
-            <a href="https://sites.google.com/view/squids-portfolio?usp=sharing" target="_blank">View Portfolio</a>
-            <!-- Visit count display for portfolio1 -->
-            <div id="visit-count-portfolio1" class="visit-counter">Visits: 0</div>
-            <!-- Portfolio link that triggers the visit count increase -->
-            <a href="#" class="portfolio-link" data-portfolio="portfolio1">Portfolio 1</a>
+            <!-- View Portfolio button -->
+            <a href="https://sites.google.com/view/squids-portfolio?usp=sharing" target="_blank" class="view-portfolio-link" data-portfolio="portfolio1">View Portfolio</a>
+        
+            <!-- hitwebcounter Code START -->
+            <a href="https://www.hitwebcounter.com" target="_blank">
+                <img src="https://hitwebcounter.com/counter/counter.php?page=17390572&style=0006&nbdigits=5&type=page&initCount=0" title="Counter Widget" alt="Visit counter For Websites" border="0" />
+            </a>
+            <!-- hitwebcounter Code END -->
+        </div>
         </div>
         <div class="portfolio-card">
             <img src="https://yt3.googleusercontent.com/EcvjDpuwPqjl_UmeYJMWrClU6BQTYWwkkEzIljxmEGnl4TK3N93U02bnXd5mjizjcdsatRmb4zg=s160-c-k-c0x00ffffff-no-rj" alt="Profile Picture">
             <h2>Soap64</h2>
             <p>‎Music, Graphic Design</p>
             <a href="https://soapssite.firebaseapp.com/" target="_blank">View Portfolio</a>
-            <div id="visit-count-portfolio2" class="visit-counter">Visits: 0</div>
         </div>
         <div class="portfolio-card">
             <img src="https://cdn2.scratch.mit.edu/get_image/user/16170417_48x48.png" alt="Profile Picture">
@@ -826,58 +837,5 @@ body {
                 card.style.display = developerName.includes(input) || specialty.includes(input) ? 'block' : 'none';
             }
         }
-
-        const portfolioLinks = document.querySelectorAll('.portfolio-link');
-
-        // Event listener for when the portfolio link is clicked
-        portfolioLinks.forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                
-                const portfolioId = link.getAttribute('data-portfolio');
-                
-                // Increase the visit counter on the page
-                const visitCounterElement = document.getElementById(`visit-count-${portfolioId}`);
-                let visitCount = parseInt(visitCounterElement.innerText.replace('Visits: ', ''));
-                visitCount += 1;
-                visitCounterElement.innerText = `Visits: ${visitCount}`;
-
-                // Send POST request to update visit count on Google Sheets
-                fetch('https://script.google.com/macros/s/AKfycbzWihDO7n5ccurNeo_hWgxCAjjO-2hpvDL0On-9yn5wDKzV7wDGxTVXibTAc3C3qXWl/exec', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ portfolioId: portfolioId, visitCount: visitCount }) // Send updated visit count as well
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log("Visit count updated successfully:", data);
-                })
-                .catch(error => {
-                    console.error("Error updating visit count:", error);
-                });
-            });
-        });
-
-        // Fetch the initial visit count when the page loads
-        window.addEventListener('load', function() {
-            portfolioLinks.forEach(link => {
-                const portfolioId = link.getAttribute('data-portfolio');
-                
-                // Fetch the current visit count from Google Sheets
-                fetch('https://script.google.com/macros/s/AKfycbzWihDO7n5ccurNeo_hWgxCAjjO-2hpvDL0On-9yn5wDKzV7wDGxTVXibTAc3C3qXWl/exec?portfolioId=' + portfolioId)
-                    .then(response => response.json())
-                    .then(data => {
-                        const visitCount = data[portfolioId] || 0;
-                        const visitCounterElement = document.getElementById(`visit-count-${portfolioId}`);
-                        visitCounterElement.innerText = `Visits: ${visitCount}`;
-                    })
-                    .catch(error => {
-                        console.error("Error fetching visit count:", error);
-                    });
-            });
-        });
-    </script>
 </body>
 </html>
